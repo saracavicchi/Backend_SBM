@@ -1,6 +1,7 @@
 package it.unife.ingsw202324.MicroservizioBase.api;
 
 import it.unife.ingsw202324.MicroservizioBase.models.MyTable;
+import it.unife.ingsw202324.MicroservizioBase.models.Organizer;
 import it.unife.ingsw202324.MicroservizioBase.services.MyService;
 import it.unife.ingsw202324.MicroservizioBase.services.TemplateRestConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,13 @@ public class MainController {
         return myService.getAll();
     }
 
+    @RequestMapping("/testOrganizer")
+    public List<Organizer> testOrganizer() {
+        return myService.getAllOrg();
+    }
+
     @RequestMapping("/testWithElements") /* Annotation per definire il path del metodo (relativo alla classe)  */
     public List<MyTable> addElements() {
-
         /* Chiamata a un servizio che ritorna inserisce 3 dati e ritorna il db */
         return myService.addElements();
     }
