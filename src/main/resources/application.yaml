@@ -3,7 +3,7 @@ spring:
     name: MicroservizioBase
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    password: test
+    password: mysql123
     url: jdbc:mysql://localhost:3306/test_schema
     username: root
   jpa:

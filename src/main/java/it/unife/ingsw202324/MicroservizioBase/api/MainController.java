@@ -1,7 +1,7 @@
 package it.unife.ingsw202324.MicroservizioBase.api;
 
 import it.unife.ingsw202324.MicroservizioBase.models.MyTable;
-import it.unife.ingsw202324.MicroservizioBase.models.Organizer;
+import it.unife.ingsw202324.MicroservizioBase.models.Organizzatore;
 import it.unife.ingsw202324.MicroservizioBase.services.MyService;
 import it.unife.ingsw202324.MicroservizioBase.services.TemplateRestConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class MainController {
     }
 
     @RequestMapping("/testOrganizer")
-    public List<Organizer> testOrganizer() {
+    public List<Organizzatore> testOrganizer() {
         return myService.getAllOrg();
     }
 
@@ -33,6 +33,6 @@ public class MainController {
 
     @RequestMapping("/callREST") /* Annotation per definire il path del metodo (relativo alla classe)  */
     public String callRest() {
-        return TemplateRestConsumer.callREST("helloMock", null, true);
+        return TemplateRestConsumer.callREST("getRecentEvents", null, true);
     }
 }

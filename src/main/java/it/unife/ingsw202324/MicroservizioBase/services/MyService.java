@@ -1,9 +1,9 @@
 package it.unife.ingsw202324.MicroservizioBase.services;
 
 import it.unife.ingsw202324.MicroservizioBase.models.MyTable;
-import it.unife.ingsw202324.MicroservizioBase.models.Organizer;
+import it.unife.ingsw202324.MicroservizioBase.models.Organizzatore;
 import it.unife.ingsw202324.MicroservizioBase.repositories.MyRepository;
-import it.unife.ingsw202324.MicroservizioBase.repositories.OrganizerRepository;
+import it.unife.ingsw202324.MicroservizioBase.repositories.OrganizzatoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,15 +14,15 @@ public class MyService {
     @Autowired
     private MyRepository myRepository;
     @Autowired
-    private OrganizerRepository organizerRepository;
+    private OrganizzatoreRepository organizzatoreRepository;
 
     /* Metodo che effettua una select all sulla tabella Mysql */
     public List<MyTable> getAll() {
         return myRepository.findAll();
     }
 
-    public List<Organizer> getAllOrg() {
-        return organizerRepository.findAll();
+    public List<Organizzatore> getAllOrg() {
+        return organizzatoreRepository.findAll();
     }
 
     /* Metodo che salva un record sulla tabella  */
