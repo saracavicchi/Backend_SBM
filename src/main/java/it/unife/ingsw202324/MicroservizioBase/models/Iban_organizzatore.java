@@ -2,6 +2,7 @@ package it.unife.ingsw202324.MicroservizioBase.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,7 +21,9 @@ public class Iban_organizzatore {
     @Id /* Annotation per definire la primary key della tabella  */
     private Long id;
     private String iban;
-    private Long id_organizzatore;
+    //private Long id_organizzatore;
+    @ManyToOne
+    private Organizzatore organizzatore;
 
 
 }

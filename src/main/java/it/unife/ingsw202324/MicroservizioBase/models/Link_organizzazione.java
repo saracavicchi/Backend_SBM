@@ -2,6 +2,7 @@ package it.unife.ingsw202324.MicroservizioBase.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,8 +25,9 @@ public class Link_organizzazione {
     private Long id;
     private String nome_social;
     private String url;
-    private Long id_organizzazione;
-
+    //private Long id_organizzazione;
+    @ManyToOne
+    private Organizzazione organizzazione;
 
 
 }

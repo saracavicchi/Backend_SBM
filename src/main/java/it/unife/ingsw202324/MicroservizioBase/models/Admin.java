@@ -2,6 +2,7 @@ package it.unife.ingsw202324.MicroservizioBase.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,8 +22,14 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class Admin {
     @Id /* Annotation per definire la primary key della tabella  */
-    private Long id;
-    private Long id_organizzazione;
+
+    //private Long id;
+    //private Long id_organizzazione;
+
+    @OneToOne
+    private Organizzatore organizzatore;
+    @OneToOne
+    private Organizzazione organizzazione;
 
 
 

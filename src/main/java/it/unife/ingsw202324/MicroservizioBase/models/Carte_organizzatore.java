@@ -1,8 +1,6 @@
 package it.unife.ingsw202324.MicroservizioBase.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,8 +25,9 @@ public class Carte_organizzatore {
     private String cvv;
     private String nome;
     private String cognome;
-    private Long id_organizzatore;
-
+    //private Long id_organizzatore;
+    @ManyToOne
+    private Organizzatore organizzatore;
 
 
 }

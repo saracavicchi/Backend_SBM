@@ -1,11 +1,12 @@
 package it.unife.ingsw202324.MicroservizioBase.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
+
 /* Modello della taballa
  * Le annotation indicano che questa classe è un entity bean,
  * mappa una tabella che ha un nome fisico "my_table",
@@ -34,7 +35,14 @@ public class Organizzatore {
     private String cap;
     private String via;
     private String num_civico;
-    private Long id_organizzazione;
-
+    //private Long id_organizzazione;
+    @ManyToOne
+    private Organizzazione organizzazione;
+    @OneToMany
+    private List<Link_organizzatore> link_organizzatore;
+    @OneToMany
+    private List<Iban_organizzatore> iban_organizzatore;
+    @OneToMany
+    private List<Carte_organizzatore> carte_organizzatore;
 
 }

@@ -1,8 +1,8 @@
 package it.unife.ingsw202324.MicroservizioBase.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import java.util.List;
+
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,6 +30,14 @@ public class Organizzazione {
     private String cap;
     private String via;
     private String num_civico;
+
+    @OneToMany
+    private List<Organizzatore> organizzatori;
+    @OneToOne
+    private Admin admin;
+    @OneToMany
+    private List<Link_organizzazione> link_organizzazione;
+
 
 
 }
