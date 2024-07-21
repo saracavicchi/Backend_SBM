@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: EventGo
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: CaviSara02
+    url: jdbc:mysql://localhost:3306/sbm_db
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto:
+        validate
+      dialect:
+        org.hibernate.dialect.MySQL8Dialect
