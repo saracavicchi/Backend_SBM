@@ -1,5 +1,6 @@
 package it.unife.ingsw202324.EventGo.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -48,6 +49,7 @@ public class Organizzatore {
     @Column(name = "url_foto", length = 2000)
     private String urlFoto;
 
+    @JsonProperty("pIva")
     @Column(name = "p_iva", columnDefinition = "CHAR(11)")
     private String pIva;
 
