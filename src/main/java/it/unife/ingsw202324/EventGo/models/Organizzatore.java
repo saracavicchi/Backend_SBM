@@ -1,5 +1,8 @@
 package it.unife.ingsw202324.EventGo.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,6 +17,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "organizzatore")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Organizzatore {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,9 +32,6 @@ public class Organizzatore {
 
     @Column(name = "cognome", nullable = false, length = 45)
     private String cognome;
-
-    @Column(name = "data_nascita")
-    private LocalDate dataNascita;
 
     @Column(name = "username", nullable = false, length = 20)
     private String username;
@@ -50,9 +51,6 @@ public class Organizzatore {
 
     @Column(name = "p_iva", columnDefinition = "CHAR(11)")
     private String pIva;
-
-    @Column(name = "iban", length = 34)
-    private String iban;
 
     @Column(name = "stato", length = 45)
     private String stato;
@@ -75,7 +73,14 @@ public class Organizzatore {
     @ManyToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.SET_NULL)
     @JoinColumn(name = "id_organizzazione")
+    @JsonIgnore
     private Organizzazione organizzazione;
+
+    @Column(name = "data_nascita")
+    private LocalDate dataNascita;
+
+    @Column(name = "iban", length = 34)
+    private String iban;
 
     @OneToMany(mappedBy = "organizzatore")
     private Set<CarteOrganizzatore> carte = new LinkedHashSet<>();
@@ -84,6 +89,7 @@ public class Organizzatore {
     private Set<LinkOrganizzatore> link = new LinkedHashSet<>();
 
     @OneToOne(mappedBy = "admin")
+    @JsonIgnore
     private Organizzazione orgAmministrata;
 
 }

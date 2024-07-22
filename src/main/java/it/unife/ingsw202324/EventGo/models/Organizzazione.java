@@ -1,5 +1,8 @@
 package it.unife.ingsw202324.EventGo.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,6 +16,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "organizzazione")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Organizzazione {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,9 +39,6 @@ public class Organizzazione {
     @Column(name = "url_foto", length = 2000)
     private String urlFoto;
 
-    @Column(name = "iban", length = 34)
-    private String iban;
-
     @Column(name = "stato", length = 45)
     private String stato;
 
@@ -55,6 +56,9 @@ public class Organizzazione {
 
     @Column(name = "num_civico", length = 10)
     private String numCivico;
+
+    @Column(name = "iban", length = 34)
+    private String iban;
 
     @OneToOne(fetch = FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)

@@ -3,7 +3,7 @@ spring:
     name: EventGo
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    password: CaviSara02
+    password: mysql123
     url: jdbc:mysql://localhost:3306/sbm_db
     username: root
   jpa:
