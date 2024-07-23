@@ -46,56 +46,37 @@ public class OrganizzazioneController {
 
     @PostMapping("/creaOrganizzazione")
     public ResponseEntity<String> creaOrganizzazione(@ModelAttribute Organizzazione organizzazione,
-                                     @RequestParam(value = "sito", required = false) String sito,
-                                     @RequestParam(value = "instagram", required = false) String instagram,
-                                     @RequestParam(value = "twitter", required = false) String twitter,
-                                     @RequestParam(value = "facebook", required = false) String facebook,
-                                     @RequestParam(value = "linkedin", required = false) String linkedin,
-                                     @RequestParam(value = "foto", required = false) MultipartFile foto,
-                                     @RequestParam("idAdmin") Long idAdmin) {
+                                                     @RequestParam(value = "sito", required = false) String sito,
+                                                     @RequestParam(value = "instagram", required = false) String instagram,
+                                                     @RequestParam(value = "twitter", required = false) String twitter,
+                                                     @RequestParam(value = "facebook", required = false) String facebook,
+                                                     @RequestParam(value = "linkedin", required = false) String linkedin,
+                                                     @RequestParam(value = "foto", required = false) MultipartFile foto,
+                                                     @RequestParam("idAdmin") Long idAdmin) {
 
         organizzazione = organizzazioneService.sanitizeOrganizzazione(organizzazione);
 
-        LinkOrganizzazione instagramLink = new LinkOrganizzazione();
-        instagramLink.setNomeSocial("instagram");
-        instagramLink.setUrl(instagram);
 
-        LinkOrganizzazione twitterLink = new LinkOrganizzazione();
-        twitterLink.setNomeSocial("twitter");
-        twitterLink.setUrl(twitter);
-
-        LinkOrganizzazione facebookLink = new LinkOrganizzazione();
-        facebookLink.setNomeSocial("facebook");
-        facebookLink.setUrl(facebook);
-
-        LinkOrganizzazione linkedinLink = new LinkOrganizzazione();
-        linkedinLink.setNomeSocial("linkedin");
-        linkedinLink.setUrl(linkedin);
-
-        LinkOrganizzazione sitoLink = new LinkOrganizzazione();
-        sitoLink.setNomeSocial("sito");
-        sitoLink.setUrl(sito);
-
-        Set<LinkOrganizzazione> linkOrganizzazione = Set.of(instagramLink, twitterLink, facebookLink, linkedinLink, sitoLink);
-        organizzazione.setLink(linkOrganizzazione);
+        aggiungiLinkOrganizzazione(organizzazione, "Instagram", instagram);
+        aggiungiLinkOrganizzazione(organizzazione, "Twitter", twitter);
+        aggiungiLinkOrganizzazione(organizzazione, "Facebook", facebook);
+        aggiungiLinkOrganizzazione(organizzazione, "LinkedIn", linkedin);
+        aggiungiLinkOrganizzazione(organizzazione, "Sito", sito);
 
         Organizzatore admin = new Organizzatore();
         admin.setId(idAdmin);
         organizzazione.setAdmin(admin);
 
-        if(foto != null && !foto.isEmpty()) {
+        if (foto != null && !foto.isEmpty()) {
 
             try {
-
                 String fileName = UUID.randomUUID().toString() + "_" + foto.getOriginalFilename();
                 Path directory = Paths.get(uploadDir.replace("file:./", "")).resolve("organizzazioniImg");
                 Files.createDirectories(directory);
                 Path savePath = directory.resolve(fileName);
-
                 try (InputStream inputStream = foto.getInputStream()) {
                     Files.copy(inputStream, savePath, StandardCopyOption.REPLACE_EXISTING);
                 }
-
                 organizzazione.setUrlFoto(fileName);
 
             } catch (IOException e) {
@@ -128,9 +109,25 @@ public class OrganizzazioneController {
         }
          */
 
-        Organizzazione newOrganizzazione = organizzazioneService.creaOrganizzazione(organizzazione);
+        try {
+            Organizzazione newOrganizzazione = organizzazioneService.creaOrganizzazione(organizzazione);
 
-        return new ResponseEntity<>(newOrganizzazione.getId().toString(), HttpStatus.OK);
+            return new ResponseEntity<>(newOrganizzazione.getId().toString(), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+
+    private void aggiungiLinkOrganizzazione(Organizzazione organizzazione, String nomeSocial, String url) {
+        if (url.isEmpty()) {
+            return;
+        }
+        LinkOrganizzazione link = new LinkOrganizzazione();
+        link.setOrganizzazione(organizzazione);
+        link.setNomeSocial(nomeSocial);
+        link.setUrl(url);
+        organizzazione.getLink().add(link);
     }
 
 

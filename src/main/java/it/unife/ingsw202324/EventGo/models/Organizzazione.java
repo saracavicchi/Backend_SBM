@@ -66,7 +66,7 @@ public class Organizzazione {
     @JoinColumn(name = "id_admin")
     private Organizzatore admin;
 
-    @OneToMany(mappedBy = "organizzazione")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "organizzazione")
     private Set<LinkOrganizzazione> link = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "organizzazione")
