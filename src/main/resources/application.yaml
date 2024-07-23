@@ -12,3 +12,7 @@ spring:
         validate
       dialect:
         org.hibernate.dialect.MySQL8Dialect
+
+app:
+  upload:
+    dir: file:./src/main/resources/static/images/

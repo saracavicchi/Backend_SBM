@@ -1,6 +1,7 @@
 package it.unife.ingsw202324.EventGo.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -69,6 +70,7 @@ public class Organizzazione {
     private Set<LinkOrganizzazione> link = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "organizzazione")
+    @OrderBy("cognome ASC, nome ASC")
     private Set<Organizzatore> organizzatori = new LinkedHashSet<>();
 
 }
