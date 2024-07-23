@@ -6,8 +6,14 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.Optional;
 
+/**
+ * Interfaccia repository per l'entità Organizzatore.
+ * Estende JpaRepository per fornire funzionalità CRUD (Create, Read, Update, Delete)
+ * per la gestione degli organizzatori nel database.
+ *
+ * JpaRepository richiede la specifica dell'entità da gestire, in questo caso Organizzatore,
+ * e il tipo della chiave primaria, qui Long, per abilitare le operazioni di persistenza.
+ */
 public interface OrganizzatoreRepository extends JpaRepository<Organizzatore, Long> {
 
-    @Query("SELECT o FROM Organizzatore o WHERE o.codFiscale = :codFiscale")
-    Optional<Organizzatore> findByCodFiscale(String codFiscale);
 }
