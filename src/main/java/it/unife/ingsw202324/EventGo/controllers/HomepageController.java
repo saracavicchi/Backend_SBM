@@ -37,16 +37,15 @@ public class HomepageController {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.registerModule(new JavaTimeModule());
         Organizzatore organizzatore = null;
-        String resultJson = "{}";
         try {
             organizzatore = objectMapper.readValue(loggedUser, Organizzatore.class);
             organizzatoreService.findOrCreateOrganizzatore(organizzatore);
-            resultJson = objectMapper.writeValueAsString(organizzatore);
-            System.out.println(resultJson);
+            System.out.println(loggedUser);
+            return loggedUser;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return resultJson;
+        return "{}";
 
     }
 

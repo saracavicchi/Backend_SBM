@@ -5,13 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0be14a5f-e21c-4685-95b5-6288159638dd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.6/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/EventGoApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/EventGoApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/services/TemplateRestConsumer.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/services/TemplateRestConsumer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/services/OrganizzatoreService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/services/OrganizzatoreService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/CarteOrganizzatore.class.uniqueId12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/CarteOrganizzatoreRepository.class.uniqueId13" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/LinkOrganizzatore.class.uniqueId10" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/LinkOrganizzatoreRepository.class.uniqueId5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/LinkOrganizzazione.class.uniqueId2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/LinkOrganizzazioneRepository.class.uniqueId1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/MainController.class.uniqueId9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/MyService.class.uniqueId7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Organizzatore.class.uniqueId4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrganizzatoreRepository.class.uniqueId6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrganizzatoreService.class.uniqueId3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Organizzazione.class.uniqueId8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrganizzazioneRepository.class.uniqueId11" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/models/CarteOrganizzatore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/models/CarteOrganizzatore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/models/LinkOrganizzatore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/models/LinkOrganizzatore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/models/LinkOrganizzazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/models/LinkOrganizzazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/models/Organizzatore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/models/Organizzatore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/models/Organizzazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/models/Organizzazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/repositories/OrganizzatoreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/repositories/OrganizzatoreRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/services/OrganizzatoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/services/OrganizzatoreService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +83,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -75,7 +98,7 @@
   "keyToString": {
     "Gradle.Backend_SBM [bootRun].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "gestione-homepage",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/sarac/Documents/UNI/Triennale/TerzoAnno/SecondoSemestre/IngegneriaDelSoftware/Progetto/Backend_SBM",
     "node.js.detected.package.eslint": "true",
@@ -146,6 +169,7 @@
       <updated>1721594446624</updated>
       <workItem from="1721594447780" duration="794000" />
       <workItem from="1721630135117" duration="3891000" />
+      <workItem from="1721716597788" duration="2805000" />
     </task>
     <servers />
   </component>

@@ -21,17 +21,16 @@ public class OrganizzatoreService {
 
     // ricerca utente nel database, se non è presente significa che è un nuovo utente: salva i dati e lo crea
     @Transactional
-    public Organizzatore findOrCreateOrganizzatore(Organizzatore newOrganizzatore) {
-        AtomicBoolean isNewOrganizzatore = new AtomicBoolean(false); //per gestire in modo thread-safe la verifica in ambiente di concorrenza
-        Organizzatore organizzatore = organizzatoreRepository.findById(newOrganizzatore.getId()).orElseGet(() -> {
-            isNewOrganizzatore.set(true);
-            return new Organizzatore();
-        });
+    public void findOrCreateOrganizzatore(Organizzatore newOrganizzatore) {
 
-        if (isNewOrganizzatore.get()) {
-            organizzatoreRepository.save(organizzatore);
+        Optional<Organizzatore> organizzatoreOptional = organizzatoreRepository.findById(newOrganizzatore.getId());
+        if (organizzatoreOptional.isPresent()) {
+            System.out.println("Organizzatore già presente");
+
+        } else {
+            organizzatoreRepository.save(newOrganizzatore);
         }
-
-        return organizzatore;
     }
+
+
 }

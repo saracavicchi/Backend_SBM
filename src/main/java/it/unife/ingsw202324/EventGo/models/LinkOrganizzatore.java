@@ -1,5 +1,7 @@
 package it.unife.ingsw202324.EventGo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,6 +12,7 @@ import org.hibernate.annotations.OnDeleteAction;
 @Setter
 @Entity
 @Table(name = "link_organizzatore")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class LinkOrganizzatore {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +28,7 @@ public class LinkOrganizzatore {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "id_organizzatore", nullable = false)
+    @JsonIgnore
     private Organizzatore organizzatore;
 
 }

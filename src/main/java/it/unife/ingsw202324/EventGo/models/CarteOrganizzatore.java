@@ -1,5 +1,7 @@
 package it.unife.ingsw202324.EventGo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +14,7 @@ import java.time.LocalDate;
 @Setter
 @Entity
 @Table(name = "carte_organizzatore")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class CarteOrganizzatore {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,6 +39,7 @@ public class CarteOrganizzatore {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "id_organizzatore", nullable = false)
+    @JsonIgnore
     private Organizzatore organizzatore;
 
 }
