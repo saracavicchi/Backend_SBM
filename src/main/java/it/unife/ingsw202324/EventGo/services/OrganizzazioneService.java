@@ -30,34 +30,34 @@ public class OrganizzazioneService {
 
     public Organizzazione sanitizeOrganizzazione(Organizzazione organizzazione) {
 
-        if(organizzazione.getNome() != null && organizzazione.getNome().isEmpty()) {
+        if (organizzazione.getNome() != null && organizzazione.getNome().isEmpty()) {
             organizzazione.setNome(null);
         }
-        if(organizzazione.getDescrizione() != null && organizzazione.getDescrizione().isEmpty()) {
+        if (organizzazione.getDescrizione() != null && organizzazione.getDescrizione().isEmpty()) {
             organizzazione.setDescrizione(null);
         }
-        if(organizzazione.getTelefono() != null && organizzazione.getTelefono().isEmpty()) {
+        if (organizzazione.getTelefono() != null && organizzazione.getTelefono().isEmpty()) {
             organizzazione.setTelefono(null);
         }
-        if(organizzazione.getStato() != null && organizzazione.getStato().isEmpty()) {
+        if (organizzazione.getStato() != null && organizzazione.getStato().isEmpty()) {
             organizzazione.setStato(null);
         }
-        if(organizzazione.getProvincia() != null && organizzazione.getProvincia().isEmpty()) {
+        if (organizzazione.getProvincia() != null && organizzazione.getProvincia().isEmpty()) {
             organizzazione.setProvincia(null);
         }
-        if(organizzazione.getCittà() != null && organizzazione.getCittà().isEmpty()) {
+        if (organizzazione.getCittà() != null && organizzazione.getCittà().isEmpty()) {
             organizzazione.setCittà(null);
         }
-        if(organizzazione.getCap() != null && organizzazione.getCap().isEmpty()) {
+        if (organizzazione.getCap() != null && organizzazione.getCap().isEmpty()) {
             organizzazione.setCap(null);
         }
-        if(organizzazione.getVia() != null && organizzazione.getVia().isEmpty()) {
+        if (organizzazione.getVia() != null && organizzazione.getVia().isEmpty()) {
             organizzazione.setVia(null);
         }
-        if(organizzazione.getNumCivico() != null && organizzazione.getNumCivico().isEmpty()) {
+        if (organizzazione.getNumCivico() != null && organizzazione.getNumCivico().isEmpty()) {
             organizzazione.setNumCivico(null);
         }
-        if(organizzazione.getIban() != null && organizzazione.getIban().isEmpty()) {
+        if (organizzazione.getIban() != null && organizzazione.getIban().isEmpty()) {
             organizzazione.setIban(null);
         }
 
@@ -66,20 +66,20 @@ public class OrganizzazioneService {
 
     public Organizzazione creaOrganizzazione(Organizzazione organizzazione) {
 
-        if(organizzazioneRepository.existsByMail(organizzazione.getMail())) {
+        if (organizzazioneRepository.existsByMail(organizzazione.getMail())) {
             throw new DuplicatedEntityException("Indirizzo email già in uso");
         }
 
-        if(organizzazione.getTelefono() != null && organizzazioneRepository.existsByTelefono(organizzazione.getTelefono())) {
+        if (organizzazione.getTelefono() != null && organizzazioneRepository.existsByTelefono(organizzazione.getTelefono())) {
             throw new DuplicatedEntityException("Numero di telefono già in uso");
         }
 
-        if(organizzazione.getIban() != null && organizzazioneRepository.existsByIban(organizzazione.getIban())) {
+        if (organizzazione.getIban() != null && organizzazioneRepository.existsByIban(organizzazione.getIban())) {
             throw new DuplicatedEntityException("IBAN già in uso");
         }
 
         Organizzatore admin = organizzatoreRepository.findById(organizzazione.getAdmin().getId()).orElse(null);
-        if(admin == null) {
+        if (admin == null) {
             throw new RuntimeException("Organizzatore non trovato");
         }
         admin.setOrganizzazione(organizzazione);
@@ -88,4 +88,22 @@ public class OrganizzazioneService {
 
     }
 
+    public void deleteOrganizzatore(Long idOrganizzatore) {
+
+        Organizzatore organizzatore = organizzatoreRepository.findById(idOrganizzatore).orElse(null);
+        if (organizzatore == null) {
+            throw new RuntimeException("Organizzatore non trovato");
+        }
+        organizzatore.setOrganizzazione(null);
+        organizzatoreRepository.save(organizzatore);
+
+    }
+
+    public void deleteOrganizzazione(Long id) {
+        Organizzazione organizzazione = organizzazioneRepository.findById(id).orElse(null);
+        if (organizzazione == null) {
+            throw new RuntimeException("Organizzazione non trovata");
+        }
+        organizzazioneRepository.delete(organizzazione);
+    }
 }

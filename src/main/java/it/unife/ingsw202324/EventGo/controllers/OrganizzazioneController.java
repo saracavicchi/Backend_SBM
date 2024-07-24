@@ -28,15 +28,13 @@ import java.util.UUID;
 public class OrganizzazioneController {
 
     private final OrganizzazioneService organizzazioneService;
-    private final ServletContext servletContext;
 
-    @Value("${app.upload.dir}/organizzazioniImg/")
+    @Value("${app.upload.dir}")
     private String uploadDir;
 
     @Autowired
     public OrganizzazioneController(OrganizzazioneService organizzazioneService, ServletContext servletContext) {
         this.organizzazioneService = organizzazioneService;
-        this.servletContext = servletContext;
     }
 
     @GetMapping("/getOrganizzazione")
@@ -118,6 +116,27 @@ public class OrganizzazioneController {
         }
 
     }
+
+    @GetMapping("/deleteOrganizzatore")
+    public ResponseEntity<String> deleteOrganizzatore(@RequestParam("idOrganizzatore") Long idOrganizzatore) {
+        try {
+            organizzazioneService.deleteOrganizzatore(idOrganizzatore);
+            return new ResponseEntity<>("Organizzatore eliminato", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/deleteOrganizzazione")
+    public ResponseEntity<String> deleteOrganizzazione(@RequestParam("id") Long id) {
+        try {
+            organizzazioneService.deleteOrganizzazione(id);
+            return new ResponseEntity<>("Organizzazione eliminata", HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 
     private void aggiungiLinkOrganizzazione(Organizzazione organizzazione, String nomeSocial, String url) {
         if (url.isEmpty()) {
