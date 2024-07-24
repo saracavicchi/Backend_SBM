@@ -106,4 +106,25 @@ public class OrganizzazioneService {
         }
         organizzazioneRepository.delete(organizzazione);
     }
+
+    public void addOrganizzatore(String email, Long idOrganizzazione) {
+
+        Organizzatore organizzatore = organizzatoreRepository.findByMail(email);
+        if (organizzatore == null) {
+            throw new IllegalArgumentException("Organizzatore inesistente");
+        }
+
+        if (organizzatore.getOrganizzazione() != null) {
+            throw new IllegalArgumentException("L'organizzatore fa già parte di un'organizzazione");
+        }
+
+        Organizzazione organizzazione = organizzazioneRepository.findById(idOrganizzazione).orElse(null);
+        if (organizzazione == null) {
+            throw new RuntimeException("Organizzazione non trovata");
+        }
+
+        organizzatore.setOrganizzazione(organizzazione);
+        organizzatoreRepository.save(organizzatore);
+
+    }
 }

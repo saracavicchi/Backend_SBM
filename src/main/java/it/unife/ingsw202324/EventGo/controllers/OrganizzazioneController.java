@@ -138,6 +138,24 @@ public class OrganizzazioneController {
     }
 
 
+    @PostMapping("/addOrganizzatore")
+    public ResponseEntity<String> addOrganizzatore(@RequestParam("emailAddress") String email,
+                                                   @RequestParam("idOrganizzazione") Long idOrganizzazione) {
+
+        System.out.println("addOrganizzatore");
+
+        try {
+            organizzazioneService.addOrganizzatore(email, idOrganizzazione);
+            return new ResponseEntity<>("Organizzatore aggiunto con successo", HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            //eturn new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
     private void aggiungiLinkOrganizzazione(Organizzazione organizzazione, String nomeSocial, String url) {
         if (url.isEmpty()) {
             return;
