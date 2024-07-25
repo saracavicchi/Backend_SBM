@@ -7,22 +7,34 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.Arrays;
 import java.util.List;
 
-
+/**
+ * Classe per consumare servizi REST in modo template.
+ * Fornisce un metodo per effettuare richieste GET a un servizio REST.
+ */
 @SpringBootApplication
 public class TemplateRestConsumer {
 
+    // Base URI per l'uso di mock durante il test locale
     static String uriBaseMock = "http://localhost:3000/api/";
 
+    /**
+     * Effettua una chiamata REST GET alla risorsa specificata.
+     *
+     * @param resourceName il nome della risorsa da richiedere.
+     * @param uriBase l'URI base del servizio REST.
+     * @param useMock flag che indica se utilizzare l'URI base del mock.
+     * @return la risposta del servizio REST come stringa.
+     */
     public static String callREST(String resourceName, String uriBase, boolean useMock) {
+
+        // Crea un'istanza di RestClient
         RestClient restClient = RestClient.create();
-        /*
-        Creo uriBase per chiamare Mockoon se l'impostazione è useMock
-         */
+
+        // Se useMock è true, usa l'URI base del mock
         if(useMock)
             uriBase = uriBaseMock;
 
-        //System.out.println(uriBase+resourceName);
-
+        // Effettua una richiesta GET alla risorsa e ritorna il corpo della risposta come stringa
         return restClient.get()
                 .uri(uriBase + resourceName)
                 .retrieve()
