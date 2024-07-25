@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Transactional
 @Service
@@ -60,29 +61,35 @@ public class OrganizzazioneService {
         if (organizzazione.getIban() != null && organizzazione.getIban().isEmpty()) {
             organizzazione.setIban(null);
         }
-
+        System.out.println("Sanitized");
         return organizzazione;
     }
 
-    public Organizzazione creaOrganizzazione(Organizzazione organizzazione) {
 
-        if (organizzazioneRepository.existsByMail(organizzazione.getMail())) {
+
+    public Organizzazione salvaOrganizzazione(Organizzazione organizzazione, Optional<Long> id, Long idAdmin) {
+
+        if (organizzazioneRepository.existsByMail(organizzazione.getMail(), id.isPresent() ? id : Optional.empty())) {
             throw new DuplicatedEntityException("Indirizzo email già in uso");
         }
 
-        if (organizzazione.getTelefono() != null && organizzazioneRepository.existsByTelefono(organizzazione.getTelefono())) {
+        if (organizzazione.getTelefono() != null && organizzazioneRepository.existsByTelefono(organizzazione.getTelefono(), id.isPresent() ? id : Optional.empty())) {
             throw new DuplicatedEntityException("Numero di telefono già in uso");
         }
 
-        if (organizzazione.getIban() != null && organizzazioneRepository.existsByIban(organizzazione.getIban())) {
+        if (organizzazione.getIban() != null && organizzazioneRepository.existsByIban(organizzazione.getIban(), id.isPresent() ? id : Optional.empty())) {
             throw new DuplicatedEntityException("IBAN già in uso");
         }
 
-        Organizzatore admin = organizzatoreRepository.findById(organizzazione.getAdmin().getId()).orElse(null);
+        Organizzatore admin = organizzatoreRepository.findById(idAdmin).orElse(null);
         if (admin == null) {
             throw new RuntimeException("Organizzatore non trovato");
         }
+        if(id.isPresent()){
+            organizzazione.setAdmin(admin);
+        }
         admin.setOrganizzazione(organizzazione);
+
 
         return organizzazioneRepository.save(organizzazione);
 
