@@ -1,5 +1,6 @@
 package it.unife.ingsw202324.EventGo.controllers;
 
+import it.unife.ingsw202324.EventGo.exceptions.DuplicatedEntityException;
 import it.unife.ingsw202324.EventGo.models.LinkOrganizzazione;
 import it.unife.ingsw202324.EventGo.models.Organizzatore;
 import it.unife.ingsw202324.EventGo.models.Organizzazione;
@@ -142,17 +143,17 @@ public class OrganizzazioneController {
     public ResponseEntity<String> addOrganizzatore(@RequestParam("emailAddress") String email,
                                                    @RequestParam("idOrganizzazione") Long idOrganizzazione) {
 
-        System.out.println("addOrganizzatore");
-
         try {
             organizzazioneService.addOrganizzatore(email, idOrganizzazione);
             return new ResponseEntity<>("Organizzatore aggiunto con successo", HttpStatus.OK);
         } catch (IllegalArgumentException e) {
-            //eturn new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.OK);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        } catch (DuplicatedEntityException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
     }
 
 

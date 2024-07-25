@@ -115,7 +115,7 @@ public class OrganizzazioneService {
         }
 
         if (organizzatore.getOrganizzazione() != null) {
-            throw new IllegalArgumentException("L'organizzatore fa già parte di un'organizzazione");
+            throw new DuplicatedEntityException("L'organizzatore fa già parte di un'organizzazione");
         }
 
         Organizzazione organizzazione = organizzazioneRepository.findById(idOrganizzazione).orElse(null);
