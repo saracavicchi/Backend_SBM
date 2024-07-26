@@ -162,6 +162,21 @@ public class OrganizzazioneController {
 
     }
 
+    /**
+     * Endpoint per aggiornare un'organizzazione esistente.
+     *
+     * @param organizzazioneId l'ID dell'organizzazione da aggiornare
+     * @param organizzazioneModificata l'oggetto Organizzazione con i nuovi dati
+     * @param sito URL del sito web dell'organizzazione (opzionale)
+     * @param instagram URL del profilo Instagram (opzionale)
+     * @param twitter URL del profilo Twitter (opzionale)
+     * @param facebook URL del profilo Facebook (opzionale)
+     * @param linkedin URL del profilo LinkedIn (opzionale)
+     * @param idAdmin ID dell'amministratore dell'organizzazione
+     * @param deletedPhoto flag che indica se la foto deve essere eliminata
+     * @param foto file dell'immagine dell'organizzazione (opzionale)
+     * @return ResponseEntity contenente l'ID dell'organizzazione aggiornata o un messaggio di errore
+     */
     @PutMapping("/update/{id}")
     public ResponseEntity<String> aggiornaOrganizzazione(
             @PathVariable("id") Long organizzazioneId,
@@ -176,22 +191,31 @@ public class OrganizzazioneController {
             @RequestParam(value = "foto", required = false) MultipartFile foto) {
 
         try {
+            // Log dei dettagli dell'organizzazione modificata
             System.out.println(organizzazioneModificata.getId() + " " + organizzazioneModificata.getNome());
+
+            // Recupera l'organizzazione esistente
             Organizzazione organizzazioneEsistente = organizzazioneService.getOrganizzazione(organizzazioneId);
             if (organizzazioneEsistente == null) {
                 return new ResponseEntity<>("Organizzazione non trovata", HttpStatus.NOT_FOUND);
             }
+
+            // Salva l'URL della foto esistente
             String urlFoto = organizzazioneEsistente.getUrlFoto();
             System.out.println(deletedPhoto);
             System.out.println("Foto: " + foto);
+
+            // Sanitizza l'oggetto organizzazione modificata
             organizzazioneEsistente = organizzazioneService.sanitizeOrganizzazione(organizzazioneModificata);
 
+            // Modifica i link social dell'organizzazione
             linkOrganizzazioneService.modificaLinkOrganizzazione(organizzazioneEsistente, "Instagram", instagram);
             linkOrganizzazioneService.modificaLinkOrganizzazione(organizzazioneEsistente, "Twitter", twitter);
             linkOrganizzazioneService.modificaLinkOrganizzazione(organizzazioneEsistente, "Facebook", facebook);
             linkOrganizzazioneService.modificaLinkOrganizzazione(organizzazioneEsistente, "LinkedIn", linkedin);
             linkOrganizzazioneService.modificaLinkOrganizzazione(organizzazioneEsistente, "Sito", sito);
 
+            // Gestione del caricamento dell'immagine
             if (foto != null && !foto.isEmpty()) {
                 System.out.println("Foto non vuota");
                 String fileName = UUID.randomUUID().toString() + "_" + foto.getOriginalFilename();
@@ -202,16 +226,16 @@ public class OrganizzazioneController {
                     Files.copy(inputStream, savePath, StandardCopyOption.REPLACE_EXISTING);
                 }
                 organizzazioneEsistente.setUrlFoto(fileName);
-            }else{
-                if(deletedPhoto != null && deletedPhoto.equals("true")){
+            } else {
+                if (deletedPhoto != null && deletedPhoto.equals("true")) {
                     System.out.println("Eliminata" + deletedPhoto);
                     organizzazioneEsistente.setUrlFoto(null);
-                }
-                else {
+                } else {
                     organizzazioneEsistente.setUrlFoto(urlFoto);
                 }
             }
 
+            // Salva l'organizzazione aggiornata
             Organizzazione organizzazioneAggiornata = organizzazioneService.salvaOrganizzazione(organizzazioneEsistente, Optional.of(organizzazioneModificata.getId()), idAdmin);
             return new ResponseEntity<>(organizzazioneAggiornata.getId().toString(), HttpStatus.OK);
         } catch (Exception e) {
