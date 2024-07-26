@@ -6,6 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.Optional;
 
+/**
+ * Repository per gestire le operazioni di accesso ai dati per l'entità LinkOrganizzazione.
+ * Estende JpaRepository per fornire metodi CRUD e query personalizzate.
+ */
 public interface LinkOrganizzazioneRepository extends JpaRepository<LinkOrganizzazione, Long> {
 
     @Query("SELECT l FROM LinkOrganizzazione l WHERE l.nomeSocial = :nomeSocial AND l.organizzazione.id = :idOrganizzazione")

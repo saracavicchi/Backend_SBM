@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0be14a5f-e21c-4685-95b5-6288159638dd" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/services/LinkOrganizzazioneService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/services/LinkOrganizzazioneService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +95,7 @@
     &quot;Gradle.Backend_SBM [bootRun].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;gest-organizzazione-sara&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;gest-organizzazione&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/marcellobraghiroli/Repositories/Backend_SBM/src/main/resources/static/images/organizzatoriImg&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -166,8 +165,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
       </set>
     </attachedChunks>
   </component>
@@ -189,9 +188,12 @@
       <workItem from="1721765586955" duration="6648000" />
       <workItem from="1721805845190" duration="4936000" />
       <workItem from="1721815150649" duration="1453000" />
-      <workItem from="1721829046835" duration="5778000" />
-      <workItem from="1721889121411" duration="22025000" />
-      <workItem from="1721976705184" duration="2059000" />
+      <workItem from="1721829046835" duration="10174000" />
+      <workItem from="1721896140921" duration="2567000" />
+      <workItem from="1721927300095" duration="7000" />
+      <workItem from="1721929376765" duration="1037000" />
+      <workItem from="1721930539353" duration="1253000" />
+      <workItem from="1721940112023" duration="2046000" />
     </task>
     <servers />
   </component>

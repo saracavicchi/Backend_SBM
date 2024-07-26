@@ -1,6 +1,5 @@
 package it.unife.ingsw202324.EventGo.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
@@ -13,6 +12,9 @@ import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+/**
+ * Classe che rappresenta un organizzatore nel sistema.
+ */
 @Getter
 @Setter
 @Entity

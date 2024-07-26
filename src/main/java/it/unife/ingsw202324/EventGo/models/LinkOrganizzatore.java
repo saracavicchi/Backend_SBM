@@ -7,6 +7,9 @@ import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+/**
+ * Classe che rappresenta il link di un organizzatore nel sistema.
+ */
 @Getter
 @Setter
 @Entity

@@ -9,6 +9,9 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
 
+/**
+ * Classe che rappresenta le carte di un organizzatore nel sistema.
+ */
 @Getter
 @Setter
 @Entity
