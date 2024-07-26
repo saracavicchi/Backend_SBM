@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+/**
+ * Servizio per la gestione dei link delle organizzazioni.
+ */
 @Transactional
 @Service
 public class LinkOrganizzazioneService {
@@ -17,15 +20,26 @@ public class LinkOrganizzazioneService {
     private final LinkOrganizzazioneRepository linkOrganizzazioneRepository;
     private final OrganizzazioneRepository organizzazioneRepository;
 
+    /**
+     * Costruttore per l'iniezione delle dipendenze.
+     *
+     * @param linkOrganizzazioneRepository repository per i link delle organizzazioni
+     * @param organizzazioneRepository repository per le organizzazioni
+     */
     @Autowired
     public LinkOrganizzazioneService(LinkOrganizzazioneRepository linkOrganizzazioneRepository, OrganizzazioneRepository organizzazioneRepository) {
         this.linkOrganizzazioneRepository = linkOrganizzazioneRepository;
         this.organizzazioneRepository = organizzazioneRepository;
     }
 
-    @Transactional
+    /**
+     * Aggiunge un nuovo link all'organizzazione specificata.
+     *
+     * @param organizzazione l'organizzazione a cui aggiungere il link
+     * @param nomeSocial il nome del social network
+     * @param url l'URL del social network
+     */
     public void aggiungiLinkOrganizzazione(Organizzazione organizzazione, String nomeSocial, String url) {
-        //System.out.println("add " + nomeSocial);
         if (url.isEmpty()) {
             return;
         }
@@ -38,28 +52,30 @@ public class LinkOrganizzazioneService {
         organizzazione.getLink().add(link);
     }
 
-    @Transactional
+    /**
+     * Modifica un link esistente o ne aggiunge uno nuovo se non esiste.
+     *
+     * @param organizzazione l'organizzazione a cui appartiene il link
+     * @param nomeSocial il nome del social network
+     * @param url il nuovo URL del social network
+     */
     public void modificaLinkOrganizzazione(Organizzazione organizzazione, String nomeSocial, String url) {
-        //System.out.println("edit " + nomeSocial);
         Optional<LinkOrganizzazione> link = linkOrganizzazioneRepository.findByNomeSocialAndOrganizzazioneId(nomeSocial, organizzazione.getId());
 
         if (link.isPresent()) {
-            System.out.println(link.get().getUrl());
-
             if (url.isEmpty()) {
+                // Rimuove il link se l'URL è vuoto
                 organizzazione.getLink().remove(link.get());
                 linkOrganizzazioneRepository.delete(link.get());
-                System.out.println(link.get().getUrl() + " eliminato");
             } else {
+                // Aggiorna il link esistente
                 link.get().setUrl(url);
                 link.get().setOrganizzazione(organizzazione);
                 linkOrganizzazioneRepository.save(link.get());
             }
-        } else if(!url.isEmpty()) {
-            // Aggiungi il nuovo link
+        } else if (!url.isEmpty()) {
+            // Aggiunge un nuovo link se non esiste e l'URL non è vuoto
             aggiungiLinkOrganizzazione(organizzazione, nomeSocial, url);
         }
-
-
     }
 }
