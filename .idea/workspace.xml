@@ -5,7 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0be14a5f-e21c-4685-95b5-6288159638dd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/services/EmailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzazioniImg/47984f5c-36fd-4c92-ba3c-67240dac096e_palla.PNG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzazioniImg/72948fb4-bd72-4d45-80fa-70fcdfd864e5_eventgo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.6/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jpa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jpa.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/controllers/OrganizzazioneController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/controllers/OrganizzazioneController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/LinkOrganizzazioneService.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrganizzazioneController.class.uniqueId1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrganizzazioneService.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/controllers/OrganizzazioneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/controllers/OrganizzazioneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,6 +213,7 @@
       <workItem from="1721929376765" duration="1037000" />
       <workItem from="1721930539353" duration="1253000" />
       <workItem from="1721940112023" duration="2046000" />
+      <workItem from="1722064407442" duration="2696000" />
     </task>
     <servers />
   </component>

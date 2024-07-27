@@ -4,6 +4,7 @@ import it.unife.ingsw202324.EventGo.exceptions.DuplicatedEntityException;
 import it.unife.ingsw202324.EventGo.models.LinkOrganizzazione;
 import it.unife.ingsw202324.EventGo.models.Organizzatore;
 import it.unife.ingsw202324.EventGo.models.Organizzazione;
+import it.unife.ingsw202324.EventGo.services.EmailService;
 import it.unife.ingsw202324.EventGo.services.LinkOrganizzazioneService;
 import it.unife.ingsw202324.EventGo.services.OrganizzazioneService;
 import jakarta.servlet.ServletContext;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.MailAuthenticationException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -36,6 +38,7 @@ public class OrganizzazioneController {
     // Service che gestisce la logica delle organizzazioni
     private final OrganizzazioneService organizzazioneService;
     private final LinkOrganizzazioneService linkOrganizzazioneService;
+    private final EmailService emailService;
 
     // Directory di upload foto, letta dal file di configurazione
     @Value("${app.upload.dir}")
@@ -44,13 +47,15 @@ public class OrganizzazioneController {
     /**
      * Costruttore del controller con iniezione delle dipendenze.
      *
-     * @param organizzazioneService servizio per la gestione delle organizzazioni
-     * @param servletContext contesto del servlet per l'applicazione
+     * @param organizzazioneService     servizio per la gestione delle organizzazioni
+     * @param linkOrganizzazioneService servizio per la gestione dei link delle organizzazioni
+     * @param emailService              servizio per l'invio di email
      */
     @Autowired
-    public OrganizzazioneController(OrganizzazioneService organizzazioneService, LinkOrganizzazioneService linkOrganizzazioneService, ServletContext servletContext) {
+    public OrganizzazioneController(OrganizzazioneService organizzazioneService, LinkOrganizzazioneService linkOrganizzazioneService, EmailService emailService) {
         this.organizzazioneService = organizzazioneService;
         this.linkOrganizzazioneService = linkOrganizzazioneService;
+        this.emailService = emailService;
     }
 
     /**
@@ -68,13 +73,13 @@ public class OrganizzazioneController {
      * Endpoint per creare una nuova organizzazione.
      *
      * @param organizzazione l'oggetto Organizzazione da creare
-     * @param sito URL del sito web dell'organizzazione
-     * @param instagram URL del profilo Instagram
-     * @param twitter URL del profilo Twitter
-     * @param facebook URL del profilo Facebook
-     * @param linkedin URL del profilo LinkedIn
-     * @param foto file dell'immagine dell'organizzazione
-     * @param idAdmin ID dell'amministratore dell'organizzazione
+     * @param sito           URL del sito web dell'organizzazione
+     * @param instagram      URL del profilo Instagram
+     * @param twitter        URL del profilo Twitter
+     * @param facebook       URL del profilo Facebook
+     * @param linkedin       URL del profilo LinkedIn
+     * @param foto           file dell'immagine dell'organizzazione
+     * @param idAdmin        ID dell'amministratore dell'organizzazione
      * @return ResponseEntity contenente l'ID della nuova organizzazione o un messaggio di errore
      */
     @PostMapping("/creaOrganizzazione")
@@ -165,16 +170,16 @@ public class OrganizzazioneController {
     /**
      * Endpoint per aggiornare un'organizzazione esistente.
      *
-     * @param organizzazioneId l'ID dell'organizzazione da aggiornare
+     * @param organizzazioneId         l'ID dell'organizzazione da aggiornare
      * @param organizzazioneModificata l'oggetto Organizzazione con i nuovi dati
-     * @param sito URL del sito web dell'organizzazione (opzionale)
-     * @param instagram URL del profilo Instagram (opzionale)
-     * @param twitter URL del profilo Twitter (opzionale)
-     * @param facebook URL del profilo Facebook (opzionale)
-     * @param linkedin URL del profilo LinkedIn (opzionale)
-     * @param idAdmin ID dell'amministratore dell'organizzazione
-     * @param deletedPhoto flag che indica se la foto deve essere eliminata
-     * @param foto file dell'immagine dell'organizzazione (opzionale)
+     * @param sito                     URL del sito web dell'organizzazione (opzionale)
+     * @param instagram                URL del profilo Instagram (opzionale)
+     * @param twitter                  URL del profilo Twitter (opzionale)
+     * @param facebook                 URL del profilo Facebook (opzionale)
+     * @param linkedin                 URL del profilo LinkedIn (opzionale)
+     * @param idAdmin                  ID dell'amministratore dell'organizzazione
+     * @param deletedPhoto             flag che indica se la foto deve essere eliminata
+     * @param foto                     file dell'immagine dell'organizzazione (opzionale)
      * @return ResponseEntity contenente l'ID dell'organizzazione aggiornata o un messaggio di errore
      */
     @PutMapping("/update/{id}")
@@ -187,7 +192,7 @@ public class OrganizzazioneController {
             @RequestParam(value = "facebook", required = false) String facebook,
             @RequestParam(value = "linkedin", required = false) String linkedin,
             @RequestParam("idAdmin") Long idAdmin,
-            @RequestParam(name= "deleted") String deletedPhoto,
+            @RequestParam(name = "deleted") String deletedPhoto,
             @RequestParam(value = "foto", required = false) MultipartFile foto) {
 
         try {
@@ -251,10 +256,14 @@ public class OrganizzazioneController {
      * @return ResponseEntity contenente un messaggio di successo o errore
      */
     @GetMapping("/deleteOrganizzatore")
-    public ResponseEntity<String> deleteOrganizzatore(@RequestParam("idOrganizzatore") Long idOrganizzatore) {
+    public ResponseEntity<String> deleteOrganizzatore(@RequestParam("idOrganizzatore") Long idOrganizzatore,
+                                                      @RequestParam("idOrganizzazione") Long idOrganizzazione) {
         try {
             organizzazioneService.deleteOrganizzatore(idOrganizzatore);
+            emailService.sendRemEmail(idOrganizzatore, idOrganizzazione);
             return new ResponseEntity<>("Organizzatore eliminato", HttpStatus.OK);
+        } catch(MailAuthenticationException e) {
+            return new ResponseEntity<>("Organizzatore rimosso con successo ma impossibile inviare email di notifica", HttpStatus.OK);
         } catch (Exception e) {
             // Gestione di errori durante l'eliminazione dell'organizzatore
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -282,7 +291,7 @@ public class OrganizzazioneController {
     /**
      * Endpoint per aggiungere un organizzatore a un'organizzazione tramite email.
      *
-     * @param email l'email dell'organizzatore da aggiungere
+     * @param email            l'email dell'organizzatore da aggiungere
      * @param idOrganizzazione l'ID dell'organizzazione a cui aggiungere l'organizzatore
      * @return ResponseEntity contenente un messaggio di successo o errore
      */
@@ -292,6 +301,7 @@ public class OrganizzazioneController {
 
         try {
             organizzazioneService.addOrganizzatore(email, idOrganizzazione);
+            emailService.sendAddEmail(email, idOrganizzazione);
             return new ResponseEntity<>("Organizzatore aggiunto con successo", HttpStatus.OK);
         } catch (IllegalArgumentException e) {
             // Gestione di errori di argomento non valido
@@ -299,7 +309,11 @@ public class OrganizzazioneController {
         } catch (DuplicatedEntityException e) {
             // Gestione di errore di entità duplicata
             return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
-        } catch (Exception e) {
+        } catch (MailAuthenticationException e) {
+            // Gestione di errori di autenticazione email
+            return new ResponseEntity<>("Organizzatore aggiunto con successo ma impossibile inviare email di notifica", HttpStatus.OK);
+        }
+        catch (Exception e) {
             // Gestione di errori generali durante l'aggiunta dell'organizzatore
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -310,8 +324,8 @@ public class OrganizzazioneController {
      * Metodo di utilità per aggiungere un link social all'organizzazione.
      *
      * @param organizzazione l'organizzazione a cui aggiungere il link
-     * @param nomeSocial il nome del social network
-     * @param url l'URL del profilo social
+     * @param nomeSocial     il nome del social network
+     * @param url            l'URL del profilo social
      */
     private void aggiungiLinkOrganizzazione(Organizzazione organizzazione, String nomeSocial, String url) {
         if (url.isEmpty()) {
