@@ -62,7 +62,7 @@ public class LinkOrganizzazioneService {
      */
     public void modificaLinkOrganizzazione(Organizzazione organizzazione, String nomeSocial, String url) {
 
-        //System.out.println("Social " + nomeSocial + " URL " + url + " Organizzazione " + organizzazione.getId());
+
         Optional<LinkOrganizzazione> link = linkOrganizzazioneRepository.findByNomeSocialAndOrganizzazioneId(nomeSocial, organizzazione.getId());
 
         if (link.isPresent()) {

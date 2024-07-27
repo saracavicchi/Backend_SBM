@@ -2,28 +2,26 @@ package it.unife.ingsw202324.EventGo.controllers;
 
 import it.unife.ingsw202324.EventGo.services.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.FileNotFoundException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * Controller per la gestione delle immagini caricate.
- * Fornisce un endpoint per recuperare le immagini in base alla tipologia.
+ * Controller per la gestione delle immagini.
+ * Fornisce endpoint per il recupero di immagini memorizzate nel server.
  */
 @RestController
 @RequestMapping("/api/images")
 public class ImageController {
 
 
+    // Servizio per la gestione delle immagini
     private final ImageService imageService;
 
     /*
@@ -41,18 +39,17 @@ public class ImageController {
 
     */
 
+    /**
+     * Costruttore per l'iniezione del servizio di gestione delle immagini.
+     *
+     * @param imageService il servizio utilizzato per la gestione delle immagini.
+     */
     @Autowired
     public ImageController(ImageService imageService) {
         this.imageService = imageService;
     }
 
-    /**
-     * Recupera un'immagine basata sulla tipologia e sul nome forniti.
-     *
-     * @param tipologia la tipologia dell'immagine (organizzatore, organizzazione, mock).
-     * @param name il nome dell'immagine da recuperare.
-     * @return la risposta contenente l'immagine come Resource.
-     */
+
     /*
     @GetMapping("/{tipologia}")
     public ResponseEntity<Resource> getImage(@PathVariable String tipologia, @RequestParam("name") String name) {
@@ -104,6 +101,14 @@ public class ImageController {
 
      */
 
+
+    /**
+     * Endpoint per il recupero di un'immagine specifica.
+     *
+     * @param tipologia il tipo di immagine da recuperare.
+     * @param name il nome dell'immagine da recuperare.
+     * @return la ResponseEntity contenente l'immagine richiesta o un appropriato codice di errore.
+     */
     @GetMapping("/{tipologia}")
     public ResponseEntity<Resource> getImage(@PathVariable String tipologia, @RequestParam("name") String name) {
         try {

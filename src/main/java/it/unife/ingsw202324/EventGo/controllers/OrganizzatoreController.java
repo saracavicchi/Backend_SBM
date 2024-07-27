@@ -8,30 +8,34 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Controller REST per la gestione delle operazioni relative agli organizzatori.
+ * Controller per la gestione degli organizzatori.
+ * Fornisce endpoint per operazioni relative agli organizzatori.
  */
 @RestController
 @RequestMapping("/api/organizzatore")
 public class OrganizzatoreController {
 
-    // Service che gestisce la logica degli organizzatori
+
+    // Servizio per la gestione degli organizzatori
     private final OrganizzatoreService organizzatoreService;
 
+
     /**
-     * Costruttore del controller con iniezione delle dipendenze.
+     * Costruttore per l'iniezione del servizio di gestione degli organizzatori.
      *
-     * @param organizzatoreService servizio per la gestione degli organizzatori
+     * @param organizzatoreService il servizio utilizzato per la gestione degli organizzatori.
      */
     @Autowired
     public OrganizzatoreController(OrganizzatoreService organizzatoreService) {
         this.organizzatoreService = organizzatoreService;
     }
 
+
     /**
-     * Endpoint per verificare se un organizzatore appartiene a un'organizzazione.
+     * Endpoint per verificare se un organizzatore ha un'organizzazione associata.
      *
-     * @param idOrganizzatore l'ID dell'organizzatore
-     * @return l'ID dell'organizzazione a cui appartiene l'organizzatore, o null se non ne appartiene a nessuna
+     * @param idOrganizzatore l'ID dell'organizzatore da verificare.
+     * @return l'ID dell'organizzazione associata all'organizzatore, oppure null se non esiste.
      */
     @GetMapping("/hasOrganizzazione")
     public Long hasOrganizzazione(@RequestParam("id") Long idOrganizzatore) {
