@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+
 /**
  * Servizio per la gestione dei link delle organizzazioni.
  */
@@ -60,6 +61,8 @@ public class LinkOrganizzazioneService {
      * @param url il nuovo URL del social network
      */
     public void modificaLinkOrganizzazione(Organizzazione organizzazione, String nomeSocial, String url) {
+
+       System.out.println("Social "+nomeSocial+" URL "+url+" Organizzazione "+organizzazione.getId());
         Optional<LinkOrganizzazione> link = linkOrganizzazioneRepository.findByNomeSocialAndOrganizzazioneId(nomeSocial, organizzazione.getId());
 
         if (link.isPresent()) {

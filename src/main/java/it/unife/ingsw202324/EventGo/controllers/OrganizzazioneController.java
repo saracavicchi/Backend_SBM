@@ -82,7 +82,7 @@ public class OrganizzazioneController {
      * @param idAdmin        ID dell'amministratore dell'organizzazione
      * @return ResponseEntity contenente l'ID della nuova organizzazione o un messaggio di errore
      */
-    @PostMapping("/creaOrganizzazione")
+    /*@PostMapping("/creaOrganizzazione")
     public ResponseEntity<String> creaOrganizzazione(@ModelAttribute Organizzazione organizzazione,
                                                      @RequestParam(value = "sito", required = false) String sito,
                                                      @RequestParam(value = "instagram", required = false) String instagram,
@@ -130,7 +130,7 @@ public class OrganizzazioneController {
                 return new ResponseEntity<>("Errore nel salvataggio dell'immagine", HttpStatus.INTERNAL_SERVER_ERROR);
             }
 
-        }
+        }*/
 
         /*
         try {
@@ -154,10 +154,32 @@ public class OrganizzazioneController {
             return new ResponseEntity<>("Errore nel caricamento dell'immagine", HttpStatus.INTERNAL_SERVER_ERROR);
         }
          */
-
+    /*
         // Tenta di creare la nuova organizzazione
         try {
             Organizzazione newOrganizzazione = organizzazioneService.salvaOrganizzazione(organizzazione, Optional.empty(), idAdmin);
+
+            return new ResponseEntity<>(newOrganizzazione.getId().toString(), HttpStatus.OK);
+        } catch (Exception e) {
+            // Gestione di errori generali durante la creazione dell'organizzazione
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }*/
+
+    @PostMapping("/creaOrganizzazione")
+    public ResponseEntity<String> creaOrganizzazione(@ModelAttribute Organizzazione organizzazione,
+                                                     @RequestParam(value = "sito", required = false) String sito,
+                                                     @RequestParam(value = "instagram", required = false) String instagram,
+                                                     @RequestParam(value = "twitter", required = false) String twitter,
+                                                     @RequestParam(value = "facebook", required = false) String facebook,
+                                                     @RequestParam(value = "linkedin", required = false) String linkedin,
+                                                     @RequestParam(value = "foto", required = false) MultipartFile foto,
+                                                     @RequestParam("idAdmin") Long idAdmin) {
+
+        // Tenta di creare la nuova organizzazione
+        try {
+            Organizzazione newOrganizzazione = organizzazioneService.creaMofificaOrganizzazione(organizzazione, Optional.empty(), idAdmin, Optional.ofNullable(foto), sito, instagram, facebook, twitter, linkedin, Optional.empty(), Optional.empty());
 
             return new ResponseEntity<>(newOrganizzazione.getId().toString(), HttpStatus.OK);
         } catch (Exception e) {
@@ -182,6 +204,7 @@ public class OrganizzazioneController {
      * @param foto                     file dell'immagine dell'organizzazione (opzionale)
      * @return ResponseEntity contenente l'ID dell'organizzazione aggiornata o un messaggio di errore
      */
+    /*
     @PutMapping("/update/{id}")
     public ResponseEntity<String> aggiornaOrganizzazione(
             @PathVariable("id") Long organizzazioneId,
@@ -245,6 +268,43 @@ public class OrganizzazioneController {
             return new ResponseEntity<>(organizzazioneAggiornata.getId().toString(), HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }*/
+
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<String> aggiornaOrganizzazione(
+            @PathVariable("id") Long organizzazioneId,
+            @ModelAttribute Organizzazione organizzazioneModificata,
+            @RequestParam(value = "sito") String sito,
+            @RequestParam(value = "instagram", required = false) String instagram,
+            @RequestParam(value = "facebook", required = false) String facebook,
+            @RequestParam(value = "twitter", required = false) String twitter,
+            @RequestParam(value = "linkedin", required = false) String linkedin,
+            @RequestParam("idAdmin") Long idAdmin,
+            @RequestParam(name = "deleted") String deletedPhoto,
+            @RequestParam(value = "foto", required = false) MultipartFile foto) {
+
+        try {
+            // Log dei dettagli dell'organizzazione modificata
+            System.out.println(organizzazioneModificata.getId() + " " + organizzazioneModificata.getNome());
+
+            // Recupera l'organizzazione esistente
+            Organizzazione organizzazioneEsistente = organizzazioneService.getOrganizzazione(organizzazioneId);
+            if (organizzazioneEsistente == null) {
+                return new ResponseEntity<>("Organizzazione non trovata", HttpStatus.NOT_FOUND);
+            }
+
+            // Salva l'URL della foto esistente
+            String urlFoto = organizzazioneEsistente.getUrlFoto();
+            System.out.println("URL  " +urlFoto);
+
+            Organizzazione organizzazioneAggiornata = organizzazioneService.creaMofificaOrganizzazione(organizzazioneModificata, Optional.of(organizzazioneModificata.getId()), idAdmin, Optional.of(foto), sito, instagram, facebook, twitter, linkedin, Optional.ofNullable(urlFoto), Optional.ofNullable(deletedPhoto));
+            return new ResponseEntity<>(organizzazioneAggiornata.getId().toString(), HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

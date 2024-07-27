@@ -7,10 +7,22 @@ import it.unife.ingsw202324.EventGo.repositories.OrganizzatoreRepository;
 import it.unife.ingsw202324.EventGo.repositories.OrganizzazioneRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
+
 
 /**
  * Servizio per la gestione delle operazioni relative alle organizzazioni.
@@ -25,16 +37,27 @@ public class OrganizzazioneService {
     // Repository per l'accesso ai dati degli organizzatori
     private final OrganizzatoreRepository organizzatoreRepository;
 
+    // Servizio per la gestione dei link delle organizzazioni
+    private final LinkOrganizzazioneService linkOrganizzazioneService;
+
+    // Directory di upload foto, letta dal file di configurazione
+    @Value("${app.upload.dir}")
+    private String uploadDir;
+
     /**
      * Costruttore del servizio con iniezione delle dipendenze.
      *
      * @param organizzazioneRepository repository per la gestione delle organizzazioni
      * @param organizzatoreRepository  repository per la gestione degli organizzatori
+     * @param linkOrganizzazioneService servizio per la gestione dei link delle organizzazioni
      */
     @Autowired
-    public OrganizzazioneService(OrganizzazioneRepository organizzazioneRepository, OrganizzatoreRepository organizzatoreRepository) {
+    public OrganizzazioneService(OrganizzazioneRepository organizzazioneRepository,
+                                 OrganizzatoreRepository organizzatoreRepository,
+                                 LinkOrganizzazioneService linkOrganizzazioneService) {
         this.organizzazioneRepository = organizzazioneRepository;
         this.organizzatoreRepository = organizzatoreRepository;
+        this.linkOrganizzazioneService = linkOrganizzazioneService;
     }
 
     /**
@@ -124,6 +147,91 @@ public class OrganizzazioneService {
 
         return organizzazioneRepository.save(organizzazione);
 
+    }
+
+    public Organizzazione creaMofificaOrganizzazione(Organizzazione organizzazione,
+                                                     Optional<Long> id,
+                                                     Long idAdmin,
+                                                     Optional<MultipartFile> foto,
+                                                     String sito,
+                                                     String instagram,
+                                                     String facebook,
+                                                     String twitter,
+                                                     String linkedin,
+                                                     Optional<String> urlFoto,
+                                                     Optional<String> deletedPhoto) throws RuntimeException {
+
+        // Sanitizza l'oggetto organizzazione (null al posto dei campi vuoti)
+        organizzazione = sanitizeOrganizzazione(organizzazione);
+
+        if(id.isEmpty()){
+            System.out.println("Creazione");
+            // Imposta l'admin dell'organizzazione
+            Organizzatore admin = new Organizzatore();
+            admin.setId(idAdmin);
+            organizzazione.setAdmin(admin);
+        }
+
+        // Aggiunge i link social all'organizzazione
+        linkOrganizzazioneService.modificaLinkOrganizzazione(organizzazione, "Sito", sito);
+        linkOrganizzazioneService.modificaLinkOrganizzazione(organizzazione, "Instagram", instagram);
+        linkOrganizzazioneService.modificaLinkOrganizzazione(organizzazione, "Facebook", facebook);
+        linkOrganizzazioneService.modificaLinkOrganizzazione(organizzazione, "Twitter", twitter);
+        linkOrganizzazioneService.modificaLinkOrganizzazione(organizzazione, "LinkedIn", linkedin);
+
+
+        try{
+            saveFotoOrganizzazione(organizzazione, foto.orElse(null), urlFoto, deletedPhoto.orElse(null));
+        }catch(RuntimeException e){
+           throw e;
+        }
+
+
+        // Salva l'organizzazione
+        return salvaOrganizzazione(organizzazione, id, idAdmin);
+
+    }
+
+
+    public void saveFotoOrganizzazione(Organizzazione organizzazione,
+                                       MultipartFile foto,
+                                       Optional<String> oldFoto,
+                                       String deletedPhoto) throws RuntimeException {
+        String urlFoto = null;
+        if(oldFoto.isPresent()){
+            urlFoto = oldFoto.get();
+        }
+
+        // Gestione del caricamento dell'immagine
+        if (foto != null && !foto.isEmpty()) {
+
+            try {
+
+                // Genera un nome unico per il file dell'immagine
+                String fileName = UUID.randomUUID().toString() + "_" + foto.getOriginalFilename();
+                Path directory = Paths.get(uploadDir.replace("file:./", "")).resolve("organizzazioniImg");
+                Files.createDirectories(directory);
+                Path savePath = directory.resolve(fileName);
+
+                // Salva il file nel percorso specificato
+                try (InputStream inputStream = foto.getInputStream()) {
+                    Files.copy(inputStream, savePath, StandardCopyOption.REPLACE_EXISTING);
+                }
+                organizzazione.setUrlFoto(fileName);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                throw new RuntimeException("Errore nel caricamento dell'immagine");
+            }
+
+        }else {
+            if (deletedPhoto != null && deletedPhoto.equals("true")) {
+                System.out.println("Eliminata" + deletedPhoto);
+                organizzazione.setUrlFoto(null);
+            } else if(urlFoto != null) {
+                organizzazione.setUrlFoto(urlFoto);
+            }
+        }
     }
 
     /**
