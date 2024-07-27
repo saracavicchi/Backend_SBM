@@ -177,7 +177,7 @@ public class OrganizzazioneService {
         linkOrganizzazioneService.modificaLinkOrganizzazione(organizzazione, "Instagram", instagram);
         linkOrganizzazioneService.modificaLinkOrganizzazione(organizzazione, "Facebook", facebook);
         linkOrganizzazioneService.modificaLinkOrganizzazione(organizzazione, "Twitter", twitter);
-        linkOrganizzazioneService.modificaLinkOrganizzazione(organizzazione, "LinkedIn", linkedin);
+        linkOrganizzazioneService.modificaLinkOrganizzazione(organizzazione, "Linkedin", linkedin);
 
 
         try {
