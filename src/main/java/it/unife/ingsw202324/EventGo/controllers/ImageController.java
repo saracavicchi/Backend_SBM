@@ -1,5 +1,7 @@
 package it.unife.ingsw202324.EventGo.controllers;
 
+import it.unife.ingsw202324.EventGo.services.ImageService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -8,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.FileNotFoundException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -20,6 +23,10 @@ import java.nio.file.Paths;
 @RequestMapping("/api/images")
 public class ImageController {
 
+
+    private final ImageService imageService;
+
+    /*
     // Directory per le immagini degli organizzatori, path a partire dal file di configurazione
     @Value("${app.upload.dir}organizzatoriImg")
     private String organizzatoreDir;
@@ -32,7 +39,11 @@ public class ImageController {
     @Value("${app.upload.dir}mockImg")
     private String mockDir;
 
-    public ImageController() {
+    */
+
+    @Autowired
+    public ImageController(ImageService imageService) {
+        this.imageService = imageService;
     }
 
     /**
@@ -42,6 +53,7 @@ public class ImageController {
      * @param name il nome dell'immagine da recuperare.
      * @return la risposta contenente l'immagine come Resource.
      */
+    /*
     @GetMapping("/{tipologia}")
     public ResponseEntity<Resource> getImage(@PathVariable String tipologia, @RequestParam("name") String name) {
 
@@ -86,6 +98,30 @@ public class ImageController {
             }
         } catch (Exception e) {
             // Gestisce eventuali eccezioni restituendo una risposta di errore interno del server
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+     */
+
+    @GetMapping("/{tipologia}")
+    public ResponseEntity<Resource> getImage(@PathVariable String tipologia, @RequestParam("name") String name) {
+        try {
+            Resource image = imageService.loadImage(tipologia, name);
+            Path fileStorageLocation = Paths.get(image.getURI());
+
+            String contentType = imageService.getContentType(fileStorageLocation);
+            contentType = contentType == null ? "application/octet-stream" : contentType;
+
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + image.getFilename() + "\"")
+                    .contentType(MediaType.parseMediaType(contentType))
+                    .body(image);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().build();
+        } catch (FileNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        } catch (Exception e) {
             return ResponseEntity.internalServerError().build();
         }
     }
