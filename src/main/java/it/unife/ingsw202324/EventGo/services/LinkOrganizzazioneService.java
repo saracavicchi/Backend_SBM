@@ -25,7 +25,7 @@ public class LinkOrganizzazioneService {
      * Costruttore per l'iniezione delle dipendenze.
      *
      * @param linkOrganizzazioneRepository repository per i link delle organizzazioni
-     * @param organizzazioneRepository repository per le organizzazioni
+     * @param organizzazioneRepository     repository per le organizzazioni
      */
     @Autowired
     public LinkOrganizzazioneService(LinkOrganizzazioneRepository linkOrganizzazioneRepository, OrganizzazioneRepository organizzazioneRepository) {
@@ -37,8 +37,8 @@ public class LinkOrganizzazioneService {
      * Aggiunge un nuovo link all'organizzazione specificata.
      *
      * @param organizzazione l'organizzazione a cui aggiungere il link
-     * @param nomeSocial il nome del social network
-     * @param url l'URL del social network
+     * @param nomeSocial     il nome del social network
+     * @param url            l'URL del social network
      */
     public void aggiungiLinkOrganizzazione(Organizzazione organizzazione, String nomeSocial, String url) {
         if (url.isEmpty()) {
@@ -57,12 +57,12 @@ public class LinkOrganizzazioneService {
      * Modifica un link esistente o ne aggiunge uno nuovo se non esiste.
      *
      * @param organizzazione l'organizzazione a cui appartiene il link
-     * @param nomeSocial il nome del social network
-     * @param url il nuovo URL del social network
+     * @param nomeSocial     il nome del social network
+     * @param url            il nuovo URL del social network
      */
     public void modificaLinkOrganizzazione(Organizzazione organizzazione, String nomeSocial, String url) {
 
-       System.out.println("Social "+nomeSocial+" URL "+url+" Organizzazione "+organizzazione.getId());
+        //System.out.println("Social " + nomeSocial + " URL " + url + " Organizzazione " + organizzazione.getId());
         Optional<LinkOrganizzazione> link = linkOrganizzazioneRepository.findByNomeSocialAndOrganizzazioneId(nomeSocial, organizzazione.getId());
 
         if (link.isPresent()) {

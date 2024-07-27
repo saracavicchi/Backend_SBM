@@ -1,0 +1,3 @@
+app:
+  upload:
+    dir: file:./src/test/resources/static/images/

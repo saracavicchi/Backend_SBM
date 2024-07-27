@@ -47,8 +47,8 @@ public class OrganizzazioneService {
     /**
      * Costruttore del servizio con iniezione delle dipendenze.
      *
-     * @param organizzazioneRepository repository per la gestione delle organizzazioni
-     * @param organizzatoreRepository  repository per la gestione degli organizzatori
+     * @param organizzazioneRepository  repository per la gestione delle organizzazioni
+     * @param organizzatoreRepository   repository per la gestione degli organizzatori
      * @param linkOrganizzazioneService servizio per la gestione dei link delle organizzazioni
      */
     @Autowired
@@ -139,7 +139,7 @@ public class OrganizzazioneService {
         if (admin == null) {
             throw new RuntimeException("Organizzatore non trovato");
         }
-        if(id.isPresent()){
+        if (id.isPresent()) {
             organizzazione.setAdmin(admin);
         }
         admin.setOrganizzazione(organizzazione);
@@ -164,8 +164,8 @@ public class OrganizzazioneService {
         // Sanitizza l'oggetto organizzazione (null al posto dei campi vuoti)
         organizzazione = sanitizeOrganizzazione(organizzazione);
 
-        if(id.isEmpty()){
-            System.out.println("Creazione");
+        if (id.isEmpty()) {
+            //System.out.println("Creazione");
             // Imposta l'admin dell'organizzazione
             Organizzatore admin = new Organizzatore();
             admin.setId(idAdmin);
@@ -180,12 +180,11 @@ public class OrganizzazioneService {
         linkOrganizzazioneService.modificaLinkOrganizzazione(organizzazione, "LinkedIn", linkedin);
 
 
-        try{
+        try {
             saveFotoOrganizzazione(organizzazione, foto.orElse(null), urlFoto, deletedPhoto.orElse(null));
-        }catch(RuntimeException e){
-           throw e;
+        } catch (RuntimeException e) {
+            throw e;
         }
-
 
         // Salva l'organizzazione
         return salvaOrganizzazione(organizzazione, id, idAdmin);
@@ -198,7 +197,7 @@ public class OrganizzazioneService {
                                        Optional<String> oldFoto,
                                        String deletedPhoto) throws RuntimeException {
         String urlFoto = null;
-        if(oldFoto.isPresent()){
+        if (oldFoto.isPresent()) {
             urlFoto = oldFoto.get();
         }
 
@@ -224,11 +223,11 @@ public class OrganizzazioneService {
                 throw new RuntimeException("Errore nel caricamento dell'immagine");
             }
 
-        }else {
+        } else {
             if (deletedPhoto != null && deletedPhoto.equals("true")) {
-                System.out.println("Eliminata" + deletedPhoto);
+                //System.out.println("Eliminata" + deletedPhoto);
                 organizzazione.setUrlFoto(null);
-            } else if(urlFoto != null) {
+            } else if (urlFoto != null) {
                 organizzazione.setUrlFoto(urlFoto);
             }
         }
@@ -273,11 +272,11 @@ public class OrganizzazioneService {
     /**
      * Aggiunge un organizzatore a un'organizzazione.
      *
-     * @param email             l'email dell'organizzatore da aggiungere
-     * @param idOrganizzazione  l'ID dell'organizzazione a cui aggiungere l'organizzatore
-     * @throws IllegalArgumentException se l'organizzatore non esiste
+     * @param email            l'email dell'organizzatore da aggiungere
+     * @param idOrganizzazione l'ID dell'organizzazione a cui aggiungere l'organizzatore
+     * @throws IllegalArgumentException  se l'organizzatore non esiste
      * @throws DuplicatedEntityException se l'organizzatore appartiene già a un'organizzazione
-     * @throws RuntimeException se l'organizzazione non viene trovata
+     * @throws RuntimeException          se l'organizzazione non viene trovata
      */
     public void addOrganizzatore(String email, Long idOrganizzazione) {
 

@@ -288,7 +288,7 @@ public class OrganizzazioneController {
 
         try {
             // Log dei dettagli dell'organizzazione modificata
-            System.out.println(organizzazioneModificata.getId() + " " + organizzazioneModificata.getNome());
+            //System.out.println(organizzazioneModificata.getId() + " " + organizzazioneModificata.getNome());
 
             // Recupera l'organizzazione esistente
             Organizzazione organizzazioneEsistente = organizzazioneService.getOrganizzazione(organizzazioneId);
@@ -298,13 +298,13 @@ public class OrganizzazioneController {
 
             // Salva l'URL della foto esistente
             String urlFoto = organizzazioneEsistente.getUrlFoto();
-            System.out.println("URL  " +urlFoto);
+            //System.out.println("URL  " +urlFoto);
 
             Organizzazione organizzazioneAggiornata = organizzazioneService.creaMofificaOrganizzazione(organizzazioneModificata, Optional.of(organizzazioneModificata.getId()), idAdmin, Optional.of(foto), sito, instagram, facebook, twitter, linkedin, Optional.ofNullable(urlFoto), Optional.ofNullable(deletedPhoto));
             return new ResponseEntity<>(organizzazioneAggiornata.getId().toString(), HttpStatus.OK);
         } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
+            //e.printStackTrace();
+            //System.out.println(e.getMessage());
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
