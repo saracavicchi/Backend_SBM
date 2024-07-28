@@ -92,4 +92,5 @@ public class Organizzatore {
     @JsonIgnore
     private Organizzazione orgAmministrata;
 
+
 }

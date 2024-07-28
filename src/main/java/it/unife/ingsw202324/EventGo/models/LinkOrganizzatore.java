@@ -29,4 +29,6 @@ public class LinkOrganizzatore {
     @JsonIgnore
     private Organizzatore organizzatore;
 
+
+
 }

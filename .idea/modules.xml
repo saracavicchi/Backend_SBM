@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/EventGo.main.iml" filepath="$PROJECT_DIR$/.idea/modules/EventGo.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MicroservizioBase.iml" filepath="$PROJECT_DIR$/.idea/modules/MicroservizioBase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MicroservizioBase.main.iml" filepath="$PROJECT_DIR$/.idea/modules/MicroservizioBase.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MicroservizioBase.test.iml" filepath="$PROJECT_DIR$/.idea/modules/MicroservizioBase.test.iml" />
     </modules>
   </component>
 </project>
