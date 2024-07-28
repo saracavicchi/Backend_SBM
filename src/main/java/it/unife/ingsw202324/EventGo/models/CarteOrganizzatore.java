@@ -2,7 +2,9 @@ package it.unife.ingsw202324.EventGo.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -42,5 +44,16 @@ public class CarteOrganizzatore {
     @JoinColumn(name = "id_organizzatore", nullable = false)
     @JsonIgnore
     private Organizzatore organizzatore;
+
+    public CarteOrganizzatore() {
+    }
+
+    public CarteOrganizzatore(String numero, String cvv, String nome, String cognome, Organizzatore organizzatore) {
+        this.numero = numero;
+        this.cvv = cvv;
+        this.nome = nome;
+        this.cognome = cognome;
+        this.organizzatore = organizzatore;
+    }
 
 }

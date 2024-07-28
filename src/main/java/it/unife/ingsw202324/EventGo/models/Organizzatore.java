@@ -52,7 +52,7 @@ public class Organizzatore {
     private String urlFoto;
 
     @Column(name = "p_iva", columnDefinition = "CHAR(11)")
-    private String pIva;
+    private String partitaIva;
 
     @Column(name = "stato", length = 45)
     private String stato;
@@ -85,6 +85,7 @@ public class Organizzatore {
     private String iban;
 
     @OneToMany(mappedBy = "organizzatore")
+    @OrderBy("id ASC")
     private Set<CarteOrganizzatore> carte = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "organizzatore")

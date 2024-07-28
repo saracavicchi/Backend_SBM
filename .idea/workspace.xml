@@ -5,7 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0be14a5f-e21c-4685-95b5-6288159638dd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/services/CarteOrganizzatoreService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/services/LinkOrganizzatoreService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.6/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/controllers/OrganizzatoreController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/controllers/OrganizzatoreController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/models/CarteOrganizzatore.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/models/CarteOrganizzatore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/models/Organizzatore.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/models/Organizzatore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/services/OrganizzatoreService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/services/OrganizzatoreService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/EmailService.class.uniqueId5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/ImageController.class.uniqueId2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/ImageService.class.uniqueId4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/LinkOrganizzazioneRepository.class.uniqueId1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/LinkOrganizzazioneService.class.uniqueId6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrganizzatoreController.class.uniqueId7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrganizzazioneController.class.uniqueId3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrganizzazioneService.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/controllers/OrganizzatoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/controllers/OrganizzatoreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/models/CarteOrganizzatore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/models/CarteOrganizzatore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/models/Organizzatore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/models/Organizzatore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/repositories/LinkOrganizzatoreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/repositories/LinkOrganizzatoreRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/repositories/OrganizzatoreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/repositories/OrganizzatoreRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/services/OrganizzatoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/services/OrganizzatoreService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,9 +125,9 @@
     &quot;Gradle.ImageControllerTest.testGetImageOrganizzatoreExists.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;gest-organizzazione&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;gest-organizzatore-agg&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/marcellobraghiroli/Repositories/Backend_SBM/src/test/resources/static/images/organizzatoriImg&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/marcellobraghiroli/Repositories/Backend_SBM&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -288,6 +313,9 @@
       <workItem from="1722152933389" duration="1011000" />
       <workItem from="1722158315651" duration="3095000" />
       <workItem from="1722164754182" duration="754000" />
+      <workItem from="1722171612719" duration="5000" />
+      <workItem from="1722171644015" duration="10183000" />
+      <workItem from="1722187359769" duration="3201000" />
     </task>
     <servers />
   </component>
