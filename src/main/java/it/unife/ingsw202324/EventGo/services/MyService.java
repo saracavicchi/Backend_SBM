@@ -23,4 +23,7 @@ public class MyService {
     }
 
 
+    public Organizzatore getUser(Long id) {
+        return organizzatoreRepository.findById(id).orElse(null);
+    }
 }

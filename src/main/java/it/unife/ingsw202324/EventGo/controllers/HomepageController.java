@@ -81,4 +81,10 @@ public class HomepageController {
     public String fetchNextEvents() {
         return TemplateRestConsumer.callREST("getNextEvents", null, true);
     }
+
+    @GetMapping("/marzel")
+    public String fetchMarzel() {
+        return TemplateRestConsumer.callREST("getElMarzel", null, true);
+
+    }
 }
