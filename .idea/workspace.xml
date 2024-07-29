@@ -5,60 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0be14a5f-e21c-4685-95b5-6288159638dd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/exceptions/GlobalExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzatoriImg/07fc5b9a-4d68-4119-9475-2431297fb47d_back2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzatoriImg/298bfc99-8f0c-4a0c-ae0b-28e2d9576120_vespa.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzatoriImg/2e9f9496-e277-4d0f-846e-fdf1f75d7034_palla.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzatoriImg/363d9f82-d0fb-48c8-8868-82fd72afa285_back2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzatoriImg/6c0beebd-1613-4b14-ba59-b4af29702671_back2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzatoriImg/7f054242-8206-431b-8172-280be21141df_palla.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzatoriImg/ae7f1a10-b6fa-472b-a218-805858695ddc_palla.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzatoriImg/b973156f-c391-463d-9f1c-4e7e5cef7781_vespa.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzatoriImg/bd3929be-1406-4150-aaba-fed0ee50b613_back6.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzatoriImg/e0bde6a7-b3a5-4ba8-991a-f3597af5d602_palla.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzatoriImg/e31533b5-b155-4785-a477-d53a2ef0474a_back2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzazioniImg/1bd27071-bded-44d8-afaa-979430d8fe74_palla.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzazioniImg/444ad0bf-2956-4530-ad77-f3fc41ea5356_back.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzazioniImg/485f0678-0bdc-4e7c-9d94-4fee7ccfd216_back2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzazioniImg/59ef45a2-e1d3-4694-bde1-d23205649520_palla.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzazioniImg/636e8b86-1b37-47d9-85d7-72d13788192e_palla.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzazioniImg/662b7c29-2431-4b63-be2d-e8dfad4e5123_back.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzazioniImg/784f2e11-5bcb-4466-975b-be8234cc458b_back3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzazioniImg/ae188aeb-dbb9-4d4a-9006-9942db6238f4_sfondo.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzazioniImg/d0b5520c-13bc-40f1-b360-8848fdf949f9_palla.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzazioniImg/d7633380-cda6-4959-be24-7ce9fd74186a_vespa.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzazioniImg/e31a1e9e-3f2b-47f7-9c9b-417903e03bff_back2.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.6/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/controllers/ImageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/controllers/ImageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/controllers/OrganizzatoreController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/controllers/OrganizzatoreController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/controllers/OrganizzazioneController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/controllers/OrganizzazioneController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/services/CarteOrganizzatoreService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/services/CarteOrganizzatoreService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/services/ImageService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/services/ImageService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/services/LinkOrganizzatoreService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/services/LinkOrganizzatoreService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/services/LinkOrganizzazioneService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/services/LinkOrganizzazioneService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/services/OrganizzatoreService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/services/OrganizzatoreService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/services/OrganizzazioneService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/services/OrganizzazioneService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/services/TemplateRestConsumer.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/services/TemplateRestConsumer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrganizzatoreController.class.uniqueId0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/controllers/ImageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/controllers/ImageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/controllers/OrganizzatoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/controllers/OrganizzatoreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/controllers/OrganizzazioneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/controllers/OrganizzazioneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/repositories/LinkOrganizzatoreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/repositories/LinkOrganizzatoreRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/repositories/OrganizzatoreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/repositories/OrganizzatoreRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/services/CarteOrganizzatoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/services/CarteOrganizzatoreService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/services/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/services/ImageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/services/LinkOrganizzatoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/services/LinkOrganizzatoreService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/services/LinkOrganizzazioneService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/services/LinkOrganizzazioneService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/services/OrganizzatoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/services/OrganizzatoreService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/services/OrganizzazioneService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/services/OrganizzazioneService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/services/TemplateRestConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/services/TemplateRestConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/classes/it.unife.ingsw202324.EventGo.controllers.ImageControllerIntegrationTest.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/classes/it.unife.ingsw202324.EventGo.controllers.ImageControllerIntegrationTest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/packages/it.unife.ingsw202324.EventGo.controllers.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/packages/it.unife.ingsw202324.EventGo.controllers.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/TEST-it.unife.ingsw202324.EventGo.controllers.ImageControllerIntegrationTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/TEST-it.unife.ingsw202324.EventGo.controllers.ImageControllerIntegrationTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/compileTransaction/stash-dir/ImageControllerIntegrationTest.class.uniqueId1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/compileTransaction/stash-dir/ImageControllerTest.class.uniqueId0" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/compileTransaction/stash-dir/ImageControllerTest.class.uniqueId0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/file:./src/test/resources/static/images/organizzatoriImg/test-image.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,33 +105,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Gradle.Backend_SBM [bootRun].executor": "Run",
-    "Gradle.Backend_SBM [bootTestRun].executor": "Run",
-    "Gradle.ImageControllerIntegrationTest.executor": "Run",
-    "Gradle.ImageControllerTest.executor": "Run",
-    "Gradle.ImageControllerTest.testGetImageOrganizzatoreExists.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "gest-organizzazione",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/marcellobraghiroli/Repositories/Backend_SBM",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Gradle.Backend_SBM [bootRun].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Backend_SBM [bootTestRun].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ImageControllerIntegrationTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ImageControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ImageControllerTest.testGetImageOrganizzatoreExists.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;gest-organizzazione&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/marcellobraghiroli/Repositories/Backend_SBM&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/test/resources/static/images/organizzatoriImg" />
@@ -185,7 +147,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/static/images/organizzazioniImg" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Backend_SBM [bootRun]">
+  <component name="RunManager" selected="Gradle.ImageControllerIntegrationTest">
     <configuration name="Backend_SBM [bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -293,9 +255,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.Backend_SBM [bootRun]" />
         <item itemvalue="Gradle.ImageControllerIntegrationTest" />
         <item itemvalue="Gradle.ImageControllerTest" />
+        <item itemvalue="Gradle.Backend_SBM [bootRun]" />
         <item itemvalue="Gradle.Backend_SBM [bootTestRun]" />
       </list>
     </recent_temporary>
@@ -345,7 +307,8 @@
       <workItem from="1722171644015" duration="10183000" />
       <workItem from="1722187359769" duration="3371000" />
       <workItem from="1722244136569" duration="4222000" />
-      <workItem from="1722248798420" duration="10111000" />
+      <workItem from="1722248798420" duration="10285000" />
+      <workItem from="1722264420545" duration="1032000" />
     </task>
     <servers />
   </component>
