@@ -143,7 +143,6 @@ public class OrganizzatoreService {
             organizzatore.setIban(null);
         }
 
-
         return organizzatore;
 
     }

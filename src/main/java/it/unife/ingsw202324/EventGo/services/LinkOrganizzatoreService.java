@@ -36,7 +36,7 @@ public class LinkOrganizzatoreService {
 
     public void modificaLinkOrganizzatore(Organizzatore organizzatore, String nomeSocial, String url) {
 
-        Optional<LinkOrganizzatore> link = linkOrganizzatoreRepository.findByNomeSocialAndOrganizzazioneId(nomeSocial, organizzatore.getId());
+        Optional<LinkOrganizzatore> link = linkOrganizzatoreRepository.findByNomeSocialAndOrganizzatoreId(nomeSocial, organizzatore.getId());
 
         if (link.isPresent()) {
             if (url.isEmpty()) {

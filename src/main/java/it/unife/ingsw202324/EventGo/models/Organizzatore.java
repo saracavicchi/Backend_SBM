@@ -84,11 +84,11 @@ public class Organizzatore {
     @Column(name = "iban", length = 34)
     private String iban;
 
-    @OneToMany(mappedBy = "organizzatore")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "organizzatore")
     @OrderBy("id ASC")
     private Set<CarteOrganizzatore> carte = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "organizzatore")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "organizzatore")
     private Set<LinkOrganizzatore> link = new LinkedHashSet<>();
 
     @OneToOne(mappedBy = "admin")

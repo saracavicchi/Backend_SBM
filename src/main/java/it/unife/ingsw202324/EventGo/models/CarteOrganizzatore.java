@@ -48,7 +48,8 @@ public class CarteOrganizzatore {
     public CarteOrganizzatore() {
     }
 
-    public CarteOrganizzatore(String numero, String cvv, String nome, String cognome, Organizzatore organizzatore) {
+    public CarteOrganizzatore(Long id, String numero, String cvv, String nome, String cognome, Organizzatore organizzatore) {
+        this.id = id;
         this.numero = numero;
         this.cvv = cvv;
         this.nome = nome;

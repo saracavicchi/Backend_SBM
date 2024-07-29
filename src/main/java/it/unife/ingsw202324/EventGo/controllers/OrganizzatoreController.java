@@ -67,16 +67,19 @@ public class OrganizzatoreController {
                                                       @RequestParam(value = "facebook", required = false) String facebook,
                                                       @RequestParam(value = "twitter", required = false) String twitter,
                                                       @RequestParam(value = "linkedin", required = false) String linkedin,
+                                                      @RequestParam(value = "idCarta1", required = false) Long idCarta1,
                                                       @RequestParam(value = "numero1", required = false) String numero1,
                                                       @RequestParam(value = "dataScadenza1", required = false) String dataScadenza1,
                                                       @RequestParam(value = "cvv1", required = false) String cvv1,
                                                       @RequestParam(value = "nome1", required = false) String nome1,
                                                       @RequestParam(value = "cognome1", required = false) String cognome1,
+                                                      @RequestParam(value = "idCarta2", required = false) Long idCarta2,
                                                       @RequestParam(value = "numero2", required = false) String numero2,
                                                       @RequestParam(value = "dataScadenza2", required = false) String dataScadenza2,
                                                       @RequestParam(value = "cvv2", required = false) String cvv2,
                                                       @RequestParam(value = "nome2", required = false) String nome2,
                                                       @RequestParam(value = "cognome2", required = false) String cognome2,
+                                                      @RequestParam(value = "idCarta3", required = false) Long idCarta3,
                                                       @RequestParam(value = "numero3", required = false) String numero3,
                                                       @RequestParam(value = "dataScadenza3", required = false) String dataScadenza3,
                                                       @RequestParam(value = "cvv3", required = false) String cvv3,
@@ -88,18 +91,19 @@ public class OrganizzatoreController {
 
         try {
 
+
             organizzatore.setId(idOrganizzatore);
 
-            CarteOrganizzatore carta1 = new CarteOrganizzatore(numero1, cvv1, nome1, cognome1, organizzatore);
-            if(!dataScadenza1.isEmpty()) {
+            CarteOrganizzatore carta1 = new CarteOrganizzatore(idCarta1, numero1, cvv1, nome1, cognome1, organizzatore);
+            if (!dataScadenza1.isEmpty()) {
                 carta1.setDataScadenza(LocalDate.parse(dataScadenza1));
             }
-            CarteOrganizzatore carta2 = new CarteOrganizzatore(numero2, cvv2, nome2, cognome2, organizzatore);
-            if(!dataScadenza2.isEmpty()) {
+            CarteOrganizzatore carta2 = new CarteOrganizzatore(idCarta2, numero2, cvv2, nome2, cognome2, organizzatore);
+            if (!dataScadenza2.isEmpty()) {
                 carta2.setDataScadenza(LocalDate.parse(dataScadenza2));
             }
-            CarteOrganizzatore carta3 = new CarteOrganizzatore(numero3, cvv3, nome3, cognome3, organizzatore);
-            if(!dataScadenza3.isEmpty()) {
+            CarteOrganizzatore carta3 = new CarteOrganizzatore(idCarta3, numero3, cvv3, nome3, cognome3, organizzatore);
+            if (!dataScadenza3.isEmpty()) {
                 carta3.setDataScadenza(LocalDate.parse(dataScadenza3));
             }
 
@@ -115,6 +119,7 @@ public class OrganizzatoreController {
             Organizzatore organizzatoreAggiornato = organizzatoreService.modificaOrganizzatore(organizzatore, Optional.of(foto), sito, instagram, facebook, twitter, linkedin, Optional.ofNullable(urlFoto), Optional.ofNullable(deletedPhoto), carta1, carta2, carta3);
             return new ResponseEntity<>("Organizzatore aggiornato con successo", HttpStatus.OK);
         } catch (Exception e) {
+            e.printStackTrace();
             // Gestione di errori generali durante l'aggiornamento dell'organizzatore
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }

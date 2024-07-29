@@ -13,5 +13,5 @@ import java.util.Optional;
 public interface LinkOrganizzatoreRepository extends JpaRepository<LinkOrganizzatore, Long> {
 
     @Query("SELECT l FROM LinkOrganizzatore l WHERE l.nomeSocial = :nomeSocial AND l.organizzatore.id = :idOrganizzatore")
-    Optional<LinkOrganizzatore> findByNomeSocialAndOrganizzazioneId(String nomeSocial, Long idOrganizzatore);
+    Optional<LinkOrganizzatore> findByNomeSocialAndOrganizzatoreId(String nomeSocial, Long idOrganizzatore);
 }

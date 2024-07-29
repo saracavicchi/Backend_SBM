@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.401s</div>
+<div class="counter">0.411s</div>
 <p>duration</p>
 </div>
 </td>
@@ -84,32 +84,32 @@
 </tr>
 <tr>
 <td class="success">testGetImageMockExists()</td>
-<td class="success">0.004s</td>
+<td class="success">0.005s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetImageMockNotExists()</td>
-<td class="success">0.002s</td>
+<td class="success">0.003s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetImageOrganizzatoreExists()</td>
-<td class="success">0.003s</td>
+<td class="success">0.005s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetImageOrganizzatoreNotExists()</td>
-<td class="success">0.003s</td>
+<td class="success">0.004s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetImageOrganizzazioneExists()</td>
-<td class="success">0.358s</td>
+<td class="success">0.357s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">testGetImageOrganizzazioneNotExists()</td>
-<td class="success">0.027s</td>
+<td class="success">0.033s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -117,8 +117,8 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>17:57:33.867 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [it.unife.ingsw202324.EventGo.controllers.ImageControllerIntegrationTest]: ImageControllerIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-17:57:33.923 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration it.unife.ingsw202324.EventGo.EventGoApplication for test class it.unife.ingsw202324.EventGo.controllers.ImageControllerIntegrationTest
+<pre>12:13:54.984 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [it.unife.ingsw202324.EventGo.controllers.ImageControllerIntegrationTest]: ImageControllerIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+12:13:55.043 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration it.unife.ingsw202324.EventGo.EventGoApplication for test class it.unife.ingsw202324.EventGo.controllers.ImageControllerIntegrationTest
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -128,23 +128,23 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.2.3)
 
-2024-07-27T17:57:34.116+02:00  INFO 18734 --- [EventGo] [    Test worker] i.u.i.E.c.ImageControllerIntegrationTest : Starting ImageControllerIntegrationTest using Java 17.0.10 with PID 18734 (started by marcellobraghiroli in /Users/marcellobraghiroli/Repositories/Backend_SBM)
-2024-07-27T17:57:34.117+02:00  INFO 18734 --- [EventGo] [    Test worker] i.u.i.E.c.ImageControllerIntegrationTest : The following 1 profile is active: &quot;test&quot;
-2024-07-27T17:57:34.402+02:00  INFO 18734 --- [EventGo] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-07-27T17:57:34.426+02:00  INFO 18734 --- [EventGo] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 5 JPA repository interfaces.
-2024-07-27T17:57:34.517+02:00  INFO 18734 --- [EventGo] [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=e438291c-2657-3fbd-b194-409e9203bca8
-2024-07-27T17:57:34.635+02:00  INFO 18734 --- [EventGo] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-07-27T17:57:34.657+02:00  INFO 18734 --- [EventGo] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
-2024-07-27T17:57:34.669+02:00  INFO 18734 --- [EventGo] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-07-27T17:57:34.756+02:00  INFO 18734 --- [EventGo] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-07-27T17:57:34.765+02:00  INFO 18734 --- [EventGo] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-07-27T17:57:34.886+02:00  INFO 18734 --- [EventGo] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@54d60fa1
-2024-07-27T17:57:34.887+02:00  INFO 18734 --- [EventGo] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-07-27T17:57:35.310+02:00  INFO 18734 --- [EventGo] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-07-27T17:57:35.334+02:00  INFO 18734 --- [EventGo] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-07-27T17:57:35.496+02:00  INFO 18734 --- [EventGo] [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2024-07-27T17:57:35.792+02:00  WARN 18734 --- [EventGo] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-07-27T17:57:35.984+02:00  INFO 18734 --- [EventGo] [    Test worker] i.u.i.E.c.ImageControllerIntegrationTest : Started ImageControllerIntegrationTest in 2.002 seconds (process running for 2.44)
+2024-07-29T12:13:55.280+02:00  INFO 29883 --- [EventGo] [    Test worker] i.u.i.E.c.ImageControllerIntegrationTest : Starting ImageControllerIntegrationTest using Java 17.0.10 with PID 29883 (started by marcellobraghiroli in /Users/marcellobraghiroli/Repositories/Backend_SBM)
+2024-07-29T12:13:55.280+02:00  INFO 29883 --- [EventGo] [    Test worker] i.u.i.E.c.ImageControllerIntegrationTest : The following 1 profile is active: &quot;test&quot;
+2024-07-29T12:13:55.571+02:00  INFO 29883 --- [EventGo] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-29T12:13:55.596+02:00  INFO 29883 --- [EventGo] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 5 JPA repository interfaces.
+2024-07-29T12:13:55.672+02:00  INFO 29883 --- [EventGo] [    Test worker] o.s.cloud.context.scope.GenericScope     : BeanFactory id=063aa3ae-b5bd-37e9-bddc-4ba177ae5cf4
+2024-07-29T12:13:55.788+02:00  INFO 29883 --- [EventGo] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-29T12:13:55.810+02:00  INFO 29883 --- [EventGo] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-07-29T12:13:55.824+02:00  INFO 29883 --- [EventGo] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-07-29T12:13:55.920+02:00  INFO 29883 --- [EventGo] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-07-29T12:13:55.930+02:00  INFO 29883 --- [EventGo] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-29T12:13:56.065+02:00  INFO 29883 --- [EventGo] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@34eaf9c1
+2024-07-29T12:13:56.066+02:00  INFO 29883 --- [EventGo] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-29T12:13:56.557+02:00  INFO 29883 --- [EventGo] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-07-29T12:13:56.583+02:00  INFO 29883 --- [EventGo] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-29T12:13:56.702+02:00  INFO 29883 --- [EventGo] [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-07-29T12:13:57.111+02:00  WARN 29883 --- [EventGo] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-29T12:13:57.297+02:00  INFO 29883 --- [EventGo] [    Test worker] i.u.i.E.c.ImageControllerIntegrationTest : Started ImageControllerIntegrationTest in 2.193 seconds (process running for 2.699)
 Let's inspect the beans provided by Spring Boot:
 applicationAvailability
 applicationTaskExecutor
@@ -152,6 +152,7 @@ basicErrorController
 beanNameHandlerMapping
 beanNameViewResolver
 carteOrganizzatoreRepository
+carteOrganizzatoreService
 characterEncodingFilter
 commandLineRunner
 compositeCompatibilityVerifier
@@ -223,6 +224,7 @@ jsonMixinModule
 jsonMixinModuleEntries
 lifecycleProcessor
 linkOrganizzatoreRepository
+linkOrganizzatoreService
 linkOrganizzazioneRepository
 linkOrganizzazioneService
 loadBalancerClientsDefaultsMappingsProvider
@@ -456,27 +458,27 @@ webServerFactoryCustomizerBeanPostProcessor
 websocketServletWebServerCustomizer
 welcomePageHandlerMapping
 welcomePageNotAcceptableHandlerMapping
-2024-07-27T17:57:36.315+02:00  INFO 18734 --- [EventGo] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2024-07-27T17:57:36.315+02:00  INFO 18734 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2024-07-27T17:57:36.316+02:00  INFO 18734 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2024-07-27T17:57:36.369+02:00  INFO 18734 --- [EventGo] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2024-07-27T17:57:36.369+02:00  INFO 18734 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2024-07-27T17:57:36.370+02:00  INFO 18734 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
-2024-07-27T17:57:36.395+02:00  INFO 18734 --- [EventGo] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2024-07-27T17:57:36.395+02:00  INFO 18734 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2024-07-27T17:57:36.395+02:00  INFO 18734 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2024-07-27T17:57:36.398+02:00  INFO 18734 --- [EventGo] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2024-07-27T17:57:36.398+02:00  INFO 18734 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2024-07-27T17:57:36.399+02:00  INFO 18734 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
-2024-07-27T17:57:36.403+02:00  INFO 18734 --- [EventGo] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2024-07-27T17:57:36.403+02:00  INFO 18734 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2024-07-27T17:57:36.403+02:00  INFO 18734 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2024-07-27T17:57:36.406+02:00  INFO 18734 --- [EventGo] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2024-07-27T17:57:36.406+02:00  INFO 18734 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2024-07-27T17:57:36.406+02:00  INFO 18734 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2024-07-27T17:57:36.410+02:00  INFO 18734 --- [EventGo] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2024-07-27T17:57:36.411+02:00  INFO 18734 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2024-07-27T17:57:36.411+02:00  INFO 18734 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2024-07-29T12:13:57.628+02:00  INFO 29883 --- [EventGo] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-07-29T12:13:57.628+02:00  INFO 29883 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-07-29T12:13:57.629+02:00  INFO 29883 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2024-07-29T12:13:57.678+02:00  INFO 29883 --- [EventGo] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-07-29T12:13:57.678+02:00  INFO 29883 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-07-29T12:13:57.679+02:00  INFO 29883 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2024-07-29T12:13:57.710+02:00  INFO 29883 --- [EventGo] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-07-29T12:13:57.711+02:00  INFO 29883 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-07-29T12:13:57.711+02:00  INFO 29883 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2024-07-29T12:13:57.717+02:00  INFO 29883 --- [EventGo] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-07-29T12:13:57.717+02:00  INFO 29883 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-07-29T12:13:57.718+02:00  INFO 29883 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2024-07-29T12:13:57.721+02:00  INFO 29883 --- [EventGo] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-07-29T12:13:57.721+02:00  INFO 29883 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-07-29T12:13:57.722+02:00  INFO 29883 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2024-07-29T12:13:57.725+02:00  INFO 29883 --- [EventGo] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-07-29T12:13:57.725+02:00  INFO 29883 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-07-29T12:13:57.725+02:00  INFO 29883 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2024-07-29T12:13:57.730+02:00  INFO 29883 --- [EventGo] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-07-29T12:13:57.730+02:00  INFO 29883 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-07-29T12:13:57.730+02:00  INFO 29883 --- [EventGo] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
 </pre>
 </span>
 </div>
@@ -488,7 +490,7 @@ welcomePageNotAcceptableHandlerMapping
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.6</a> at Jul 27, 2024, 5:57:36 PM</p>
+<a href="http://www.gradle.org">Gradle 8.6</a> at Jul 29, 2024, 12:13:57 PM</p>
 </div>
 </div>
 </body>
