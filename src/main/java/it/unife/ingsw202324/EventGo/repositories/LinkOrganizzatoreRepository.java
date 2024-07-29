@@ -12,6 +12,13 @@ import java.util.Optional;
  */
 public interface LinkOrganizzatoreRepository extends JpaRepository<LinkOrganizzatore, Long> {
 
+    /**
+     * Verifica se esiste un link con il nome social specificato per un organizzatore specificato.
+     *
+     * @param nomeSocial il nome social da verificare.
+     * @param idOrganizzatore l'ID dell'organizzazione a cui il link deve essere associato.
+     * @return true se esiste un link con il nome social specificato per l'organizzatore specificato, altrimenti false.
+     */
     @Query("SELECT l FROM LinkOrganizzatore l WHERE l.nomeSocial = :nomeSocial AND l.organizzatore.id = :idOrganizzatore")
     Optional<LinkOrganizzatore> findByNomeSocialAndOrganizzatoreId(String nomeSocial, Long idOrganizzatore);
 }

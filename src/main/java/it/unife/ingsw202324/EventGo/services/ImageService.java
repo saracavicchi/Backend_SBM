@@ -4,44 +4,59 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.Optional;
+import java.util.UUID;
 
 /**
- * Servizio per la gestione delle immagini.
- * Fornisce metodi per caricare immagini in base alla tipologia e per ottenere il tipo di contenuto delle immagini.
+ * Service per la gestione delle immagini.
+ * Fornisce funzionalità per il caricamento, il salvataggio e la gestione delle immagini.
+ *
+ * Le immagini sono organizzate in diverse directory basate sul tipo:
+ * - organizzatore
+ * - organizzazione
+ * - mock
+ *
+ * Configurazioni per le directory di salvataggio sono iniettate tramite valori di configurazione
+ * definiti nel file di proprietà dell'applicazione.
  */
 @Service
 public class ImageService {
 
-    // Directory per le immagini degli organizzatori, risolta da application.yaml
+    // Directory di salvataggio delle immagini per gli organizzatori
     @Value("${app.upload.dir}organizzatoriImg")
     private String organizzatoreDir;
 
-    // Directory per le immagini delle organizzazioni, risolta da application.yaml
+    // Directory di salvataggio delle immagini per le organizzazioni
     @Value("${app.upload.dir}organizzazioniImg")
     private String organizzazioneDir;
 
-    // Directory per le immagini di mock, risolta da application.yaml
+    // Directory di salvataggio delle immagini mock
     @Value("${app.upload.dir}mockImg")
     private String mockDir;
 
+
     /**
-     * Carica un'immagine in base alla tipologia e al nome forniti.
+     * Carica un'immagine dal filesystem basata sulla tipologia e il nome forniti.
      *
-     * @param tipologia la tipologia dell'immagine (organizzatore, mock, organizzazione).
-     * @param name il nome dell'immagine da caricare.
-     * @return la risorsa immagine caricata.
-     * @throws Exception se l'immagine non viene trovata o non è leggibile.
+     * @param tipologia la tipologia dell'immagine (organizzatore, organizzazione, mock)
+     * @param name il nome dell'immagine da caricare
+     * @return la risorsa dell'immagine caricata
+     * @throws Exception se l'immagine non può essere caricata
      */
     public Resource loadImage(String tipologia, String name) throws Exception {
 
+        // Determina la directory in base alla tipologia fornita
         String directory;
 
-        // Determina la directory basata sulla tipologia fornita
         if ("organizzatore".equals(tipologia)) {
             directory = organizzatoreDir.replace("file:", "");
         } else if ("mock".equals(tipologia)) {
@@ -49,12 +64,12 @@ public class ImageService {
         } else if ("organizzazione".equals(tipologia)) {
             directory = organizzazioneDir.replace("file:", "");
         } else {
-            // Lancia un'eccezione se la tipologia non è valida
+            // Lancia un'eccezione se la tipologia non è riconosciuta
             throw new IllegalArgumentException("Tipologia non valida");
         }
 
-        // Costruisce il percorso del file e lo normalizza
         Path directoryPath = Paths.get(directory);
+        // Risolve il percorso completo del file basato sul nome fornito
         Path fileStorageLocation = directoryPath.resolve(name).normalize();
         Resource image = new UrlResource(fileStorageLocation.toUri());
 
@@ -62,20 +77,92 @@ public class ImageService {
         if (image.exists() && image.isReadable()) {
             return image;
         } else {
-            // Lancia un'eccezione se l'immagine non viene trovata o non è leggibile
             throw new FileNotFoundException("File non trovato o non leggibile");
         }
     }
 
+
     /**
-     * Ottiene il tipo di contenuto di un file basato sulla sua estensione.
+     * Restituisce il tipo di contenuto di un file specificato.
      *
-     * @param fileStorageLocation il percorso del file di cui determinare il tipo di contenuto.
-     * @return il tipo di contenuto del file.
-     * @throws Exception se si verifica un errore nel determinare il tipo di contenuto.
+     * @param fileStorageLocation il percorso del file
+     * @return il tipo di contenuto del file
+     * @throws Exception se il tipo di contenuto non può essere determinato
      */
     public String getContentType(Path fileStorageLocation) throws Exception {
-        // Utilizza Files.probeContentType per determinare il tipo di contenuto del file
+        // Utilizza il metodo probeContentType per ottenere il MIME type del file
         return Files.probeContentType(fileStorageLocation);
     }
+
+
+    /**
+     * Salva un'immagine nel filesystem, gestendo il caso di un'immagine precedente e di un'eventuale cancellazione.
+     *
+     * @param type il tipo di immagine (organizzatore, organizzazione)
+     * @param foto il file dell'immagine da salvare
+     * @param oldFoto l'URL dell'immagine precedente, se presente
+     * @param deletedPhoto flag che indica se l'immagine precedente deve essere cancellata
+     * @return il nome del file salvato
+     */
+    public String saveImage(String type, MultipartFile foto, Optional<String> oldFoto, String deletedPhoto) {
+
+        String destDirectory;
+
+        // URL dell'immagine precedente, se presente
+        String urlFoto = null;
+        if (oldFoto.isPresent()) {
+            urlFoto = oldFoto.get();
+        }
+
+        // Se c'è un nuovo file da salvare
+        if (foto != null && !foto.isEmpty()) {
+
+            try {
+
+                // Genera un nuovo nome di file unico utilizzando UUID
+                String fileName = UUID.randomUUID().toString() + "_" + foto.getOriginalFilename();
+
+                // Determina la directory di destinazione in base al tipo
+                if (type.equals("organizzatore")) {
+                    destDirectory = organizzatoreDir;
+                } else if (type.equals("organizzazione")) {
+                    destDirectory = organizzazioneDir;
+                } else {
+                    // Lancia un'eccezione se la tipologia non è riconosciuta
+                    throw new IllegalArgumentException("Tipologia non valida");
+                }
+
+                Path directory = Paths.get(destDirectory.replace("file:./", ""));
+                // Crea le directory se non esistono
+                Files.createDirectories(directory);
+                Path savePath = directory.resolve(fileName);
+
+                // Copia il file nella directory di destinazione
+                try (InputStream inputStream = foto.getInputStream()) {
+                    Files.copy(inputStream, savePath, StandardCopyOption.REPLACE_EXISTING);
+                }
+
+                // Restituisce il nome del file salvato
+                return fileName;
+
+            } catch (IOException e) {
+                // Lancia un'eccezione runtime in caso di errore durante il salvataggio
+                throw new RuntimeException("Errore nel salvataggio dell'immagine");
+            }
+
+        } else {
+            // Gestione della rimozione dell'immagine precedente
+            if (deletedPhoto != null && deletedPhoto.equals("true")) {
+                return null;
+            } else if (urlFoto != null) {
+                // Restituisce l'URL della vecchia immagine se esiste e non è stata rimossa
+                return urlFoto;
+            }
+        }
+
+        // Lancia un'eccezione runtime se nessuna condizione è stata soddisfatta
+        throw new RuntimeException("Errore nel salvataggio dell'immagine");
+    }
+
+
 }

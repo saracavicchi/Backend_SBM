@@ -2,10 +2,8 @@ package it.unife.ingsw202324.EventGo.services;
 
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-        import org.springframework.web.client.RestClient;
+import org.springframework.web.client.RestClient;
 
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Classe per consumare servizi REST in modo template.
@@ -21,8 +19,8 @@ public class TemplateRestConsumer {
      * Effettua una chiamata REST GET alla risorsa specificata.
      *
      * @param resourceName il nome della risorsa da richiedere.
-     * @param uriBase l'URI base del servizio REST.
-     * @param useMock flag che indica se utilizzare l'URI base del mock.
+     * @param uriBase      l'URI base del servizio REST.
+     * @param useMock      flag che indica se utilizzare l'URI base del mock.
      * @return la risposta del servizio REST come stringa.
      */
     public static String callREST(String resourceName, String uriBase, boolean useMock) {
@@ -31,7 +29,7 @@ public class TemplateRestConsumer {
         RestClient restClient = RestClient.create();
 
         // Se useMock è true, usa l'URI base del mock
-        if(useMock)
+        if (useMock)
             uriBase = uriBaseMock;
 
         // Effettua una richiesta GET alla risorsa e ritorna il corpo della risposta come stringa

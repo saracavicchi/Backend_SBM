@@ -2,7 +2,6 @@ package it.unife.ingsw202324.EventGo.controllers;
 
 import it.unife.ingsw202324.EventGo.models.CarteOrganizzatore;
 import it.unife.ingsw202324.EventGo.models.Organizzatore;
-import it.unife.ingsw202324.EventGo.models.Organizzazione;
 import it.unife.ingsw202324.EventGo.services.OrganizzatoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,22 +13,20 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 /**
- * Controller per la gestione degli organizzatori.
- * Fornisce endpoint per operazioni relative agli organizzatori.
+ * Controller REST per la gestione degli organizzatori.
+ * Fornisce endpoint per recuperare, verificare e aggiornare gli organizzatori.
  */
 @RestController
 @RequestMapping("/api/organizzatore")
 public class OrganizzatoreController {
 
 
-    // Servizio per la gestione degli organizzatori
     private final OrganizzatoreService organizzatoreService;
 
-
     /**
-     * Costruttore per l'iniezione del servizio di gestione degli organizzatori.
+     * Costruttore per l'iniezione del servizio OrganizzatoreService.
      *
-     * @param organizzatoreService il servizio utilizzato per la gestione degli organizzatori.
+     * @param organizzatoreService il servizio per la gestione degli organizzatori
      */
     @Autowired
     public OrganizzatoreController(OrganizzatoreService organizzatoreService) {
@@ -40,25 +37,59 @@ public class OrganizzatoreController {
     /**
      * Endpoint per verificare se un organizzatore ha un'organizzazione associata.
      *
-     * @param idOrganizzatore l'ID dell'organizzatore da verificare.
-     * @return l'ID dell'organizzazione associata all'organizzatore, oppure null se non esiste.
+     * @param idOrganizzatore l'ID dell'organizzatore
+     * @return l'ID dell'organizzazione associata, se presente
      */
     @GetMapping("/hasOrganizzazione")
     public Long hasOrganizzazione(@RequestParam("id") Long idOrganizzatore) {
         return organizzatoreService.hasOrganizzazione(idOrganizzatore);
     }
 
+
     /**
-     * Endpoint per ottenere un organizzatore.
+     * Endpoint per recuperare le informazioni di un organizzatore.
      *
-     * @param idOrganizzatore l'ID dell'organizzatore da ottenere.
-     * @return l'organizzatore richiesto.
+     * @param idOrganizzatore l'ID dell'organizzatore
+     * @return l'organizzatore corrispondente all'ID fornito
      */
     @GetMapping("/getOrganizzatore")
     public Organizzatore getOrganizzatore(@RequestParam("id") Long idOrganizzatore) {
         return organizzatoreService.getOrganizzatore(idOrganizzatore);
     }
 
+
+    /**
+     * Endpoint per aggiornare le informazioni di un organizzatore.
+     *
+     * @param idOrganizzatore l'ID dell'organizzatore da aggiornare
+     * @param organizzatore l'oggetto Organizzatore con le nuove informazioni
+     * @param sito l'URL del sito web dell'organizzatore
+     * @param instagram l'URL del profilo Instagram dell'organizzatore
+     * @param facebook l'URL del profilo Facebook dell'organizzatore
+     * @param twitter l'URL del profilo Twitter dell'organizzatore
+     * @param linkedin l'URL del profilo LinkedIn dell'organizzatore
+     * @param idCarta1 l'ID della prima carta di credito
+     * @param numero1 il numero della prima carta di credito
+     * @param dataScadenza1 la data di scadenza della prima carta di credito
+     * @param cvv1 il CVV della prima carta di credito
+     * @param nome1 il nome sulla prima carta di credito
+     * @param cognome1 il cognome sulla prima carta di credito
+     * @param idCarta2 l'ID della seconda carta di credito
+     * @param numero2 il numero della seconda carta di credito
+     * @param dataScadenza2 la data di scadenza della seconda carta di credito
+     * @param cvv2 il CVV della seconda carta di credito
+     * @param nome2 il nome sulla seconda carta di credito
+     * @param cognome2 il cognome sulla seconda carta di credito
+     * @param idCarta3 l'ID della terza carta di credito
+     * @param numero3 il numero della terza carta di credito
+     * @param dataScadenza3 la data di scadenza della terza carta di credito
+     * @param cvv3 il CVV della terza carta di credito
+     * @param nome3 il nome sulla terza carta di credito
+     * @param cognome3 il cognome sulla terza carta di credito
+     * @param deletedPhoto flag che indica se la foto dell'organizzatore deve essere cancellata
+     * @param foto il file della nuova foto dell'organizzatore
+     * @return ResponseEntity con il risultato dell'operazione di aggiornamento
+     */
     @PutMapping("/update/{id}")
     public ResponseEntity<String> updateOrganizzatore(@PathVariable("id") Long idOrganizzatore,
                                                       @ModelAttribute Organizzatore organizzatore,
@@ -91,9 +122,10 @@ public class OrganizzatoreController {
 
         try {
 
-
+            // Imposta l'ID dell'organizzatore
             organizzatore.setId(idOrganizzatore);
 
+            // Crea e popola gli oggetti CarteOrganizzatore per ciascuna delle carte di credito
             CarteOrganizzatore carta1 = new CarteOrganizzatore(idCarta1, numero1, cvv1, nome1, cognome1, organizzatore);
             if (!dataScadenza1.isEmpty()) {
                 carta1.setDataScadenza(LocalDate.parse(dataScadenza1));
@@ -107,20 +139,23 @@ public class OrganizzatoreController {
                 carta3.setDataScadenza(LocalDate.parse(dataScadenza3));
             }
 
-            // Recupera l'organizzatore esistente
+            // Recupera l'organizzatore esistente dal servizio
             Organizzatore organizzatoreEsistente = organizzatoreService.getOrganizzatore(idOrganizzatore);
             if (organizzatoreEsistente == null) {
                 return new ResponseEntity<>("Organizzatore non trovato", HttpStatus.NOT_FOUND);
             }
 
+            // Imposta l'organizzazione esistente nell'oggetto organizzatore
+            organizzatore.setOrganizzazione(organizzatoreEsistente.getOrganizzazione());
+
+            // Ottiene l'URL della foto esistente
             String urlFoto = organizzatoreEsistente.getUrlFoto();
 
-            // Aggiorna l'organizzatore con i nuovi dati
+            // Modifica l'organizzatore esistente con le nuove informazioni
             Organizzatore organizzatoreAggiornato = organizzatoreService.modificaOrganizzatore(organizzatore, Optional.of(foto), sito, instagram, facebook, twitter, linkedin, Optional.ofNullable(urlFoto), Optional.ofNullable(deletedPhoto), carta1, carta2, carta3);
             return new ResponseEntity<>("Organizzatore aggiornato con successo", HttpStatus.OK);
         } catch (Exception e) {
-            e.printStackTrace();
-            // Gestione di errori generali durante l'aggiornamento dell'organizzatore
+            // Gestisce eventuali eccezioni durante l'aggiornamento dell'organizzatore
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
 

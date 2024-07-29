@@ -7,77 +7,62 @@ import it.unife.ingsw202324.EventGo.repositories.OrganizzatoreRepository;
 import it.unife.ingsw202324.EventGo.repositories.OrganizzazioneRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.Optional;
-import java.util.UUID;
-
 
 /**
- * Servizio per la gestione delle organizzazioni.
- * Fornisce metodi per creare, modificare, eliminare organizzazioni e gestire gli organizzatori.
+ * Service per la gestione delle organizzazioni.
+ * Fornisce metodi per creare, modificare, recuperare ed eliminare le organizzazioni e i loro organizzatori associati.
  */
 @Transactional
 @Service
 public class OrganizzazioneService {
 
-    // Repository per l'accesso ai dati delle organizzazioni
     private final OrganizzazioneRepository organizzazioneRepository;
-
-    // Repository per l'accesso ai dati degli organizzatori
     private final OrganizzatoreRepository organizzatoreRepository;
-
-    // Servizio per la gestione dei link delle organizzazioni
     private final LinkOrganizzazioneService linkOrganizzazioneService;
-
-    // Directory di upload foto, ricavata da application.properties
-    @Value("${app.upload.dir}")
-    private String uploadDir;
-
+    private final ImageService imageService;
 
     /**
-     * Costruttore per l'iniezione delle dipendenze necessarie.
+     * Costruttore per l'iniezione dei servizi necessari.
      *
-     * @param organizzazioneRepository il repository per la gestione delle organizzazioni.
-     * @param organizzatoreRepository il repository per la gestione degli organizzatori.
-     * @param linkOrganizzazioneService il servizio per la gestione dei link delle organizzazioni.
+     * @param organizzazioneRepository il repository per la gestione delle organizzazioni
+     * @param organizzatoreRepository il repository per la gestione degli organizzatori
+     * @param linkOrganizzazioneService il servizio per la gestione dei link delle organizzazioni
+     * @param imageService il servizio per la gestione delle immagini delle organizzazioni
      */
     @Autowired
     public OrganizzazioneService(OrganizzazioneRepository organizzazioneRepository,
                                  OrganizzatoreRepository organizzatoreRepository,
-                                 LinkOrganizzazioneService linkOrganizzazioneService) {
+                                 LinkOrganizzazioneService linkOrganizzazioneService,
+                                 ImageService imageService) {
         this.organizzazioneRepository = organizzazioneRepository;
         this.organizzatoreRepository = organizzatoreRepository;
         this.linkOrganizzazioneService = linkOrganizzazioneService;
+        this.imageService = imageService;
     }
 
+
     /**
-     * Recupera un'organizzazione dato il suo ID.
+     * Recupera le informazioni di un'organizzazione.
      *
      * @param idOrganizzazione l'ID dell'organizzazione
-     * @return l'organizzazione trovata, o null se non esiste
+     * @return l'organizzazione corrispondente all'ID fornito, se presente, altrimenti null
      */
     public Organizzazione getOrganizzazione(Long idOrganizzazione) {
         return organizzazioneRepository.findById(idOrganizzazione).orElse(null);
     }
 
+
     /**
-     * Pulisce i campi vuoti di un'istanza di Organizzazione.
+     * Pulisce i campi di un'organizzazione da stringhe vuote, impostandoli a null.
      *
-     * @param organizzazione l'istanza di Organizzazione da sanitizzare
-     * @return l'istanza sanitizzata di Organizzazione
+     * @param organizzazione l'organizzazione da pulire
+     * @return l'organizzazione pulita
      */
     public Organizzazione sanitizeOrganizzazione(Organizzazione organizzazione) {
-
-        // Verifica se il campo è vuoto e lo imposta a null
 
         if (organizzazione.getNome() != null && organizzazione.getNome().isEmpty()) {
             organizzazione.setNome(null);
@@ -115,30 +100,32 @@ public class OrganizzazioneService {
 
 
     /**
-     * Salva un'organizzazione nel repository.
+     * Salva un'organizzazione nel repository, verificando eventuali duplicati.
      *
      * @param organizzazione l'organizzazione da salvare
-     * @param id l'ID dell'organizzazione (se presente)
+     * @param id l'ID dell'organizzazione, se presente
      * @param idAdmin l'ID dell'amministratore dell'organizzazione
      * @return l'organizzazione salvata
-     * @throws DuplicatedEntityException se email, telefono o IBAN sono già in uso
+     * @throws DuplicatedEntityException se sono presenti duplicati per email, telefono o IBAN
      */
     public Organizzazione salvaOrganizzazione(Organizzazione organizzazione, Optional<Long> id, Long idAdmin) {
 
-        // Verifica l'unicità di email, telefono e IBAN
+        // Verifica se l'email è già in uso da un'altra organizzazione
         if (organizzazioneRepository.existsByMail(organizzazione.getMail(), id.isPresent() ? id : Optional.empty())) {
             throw new DuplicatedEntityException("Indirizzo email già in uso");
         }
 
+        // Verifica se il numero di telefono è già in uso da un'altra organizzazione
         if (organizzazione.getTelefono() != null && organizzazioneRepository.existsByTelefono(organizzazione.getTelefono(), id.isPresent() ? id : Optional.empty())) {
             throw new DuplicatedEntityException("Numero di telefono già in uso");
         }
 
+        // Verifica se l'IBAN è già in uso da un'altra organizzazione
         if (organizzazione.getIban() != null && organizzazioneRepository.existsByIban(organizzazione.getIban(), id.isPresent() ? id : Optional.empty())) {
             throw new DuplicatedEntityException("IBAN già in uso");
         }
 
-        // Trova l'amministratore dell'organizzazione e lo setta
+        // Recupera l'amministratore dell'organizzazione
         Organizzatore admin = organizzatoreRepository.findById(idAdmin).orElse(null);
         if (admin == null) {
             throw new RuntimeException("Organizzatore non trovato");
@@ -153,22 +140,23 @@ public class OrganizzazioneService {
 
     }
 
+
     /**
-     * Crea o modifica un'organizzazione.
+     * Crea o modifica un'organizzazione, gestendo i link social e l'immagine associata.
      *
-     * @param organizzazione l'istanza di Organizzazione da creare o modificare
-     * @param id l'ID dell'organizzazione (se presente)
+     * @param organizzazione l'organizzazione da creare o modificare
+     * @param id l'ID dell'organizzazione, se presente
      * @param idAdmin l'ID dell'amministratore dell'organizzazione
-     * @param foto la foto dell'organizzazione (opzionale)
-     * @param sito il sito web dell'organizzazione
-     * @param instagram il profilo Instagram dell'organizzazione
-     * @param facebook il profilo Facebook dell'organizzazione
-     * @param twitter il profilo Twitter dell'organizzazione
-     * @param linkedin il profilo LinkedIn dell'organizzazione
-     * @param urlFoto l'URL della foto dell'organizzazione (opzionale)
-     * @param deletedPhoto l'URL della foto da eliminare (opzionale)
-     * @return l'istanza di Organizzazione creata o modificata
-     * @throws RuntimeException se si verifica un errore durante il salvataggio dell'immagine
+     * @param foto l'immagine dell'organizzazione
+     * @param sito l'URL del sito web dell'organizzazione
+     * @param instagram l'URL del profilo Instagram dell'organizzazione
+     * @param facebook l'URL del profilo Facebook dell'organizzazione
+     * @param twitter l'URL del profilo Twitter dell'organizzazione
+     * @param linkedin l'URL del profilo LinkedIn dell'organizzazione
+     * @param urlFoto l'URL della foto esistente dell'organizzazione
+     * @param deletedPhoto flag che indica se la foto deve essere cancellata
+     * @return l'organizzazione creata o modificata
+     * @throws RuntimeException se si verifica un errore durante la creazione o modifica dell'organizzazione
      */
     public Organizzazione creaMofificaOrganizzazione(Organizzazione organizzazione,
                                                      Optional<Long> id,
@@ -182,147 +170,95 @@ public class OrganizzazioneService {
                                                      Optional<String> urlFoto,
                                                      Optional<String> deletedPhoto) throws RuntimeException {
 
-        // Sanitizza l'oggetto organizzazione (null al posto dei campi vuoti)
+        // Sanitize the organization data to avoid empty strings
         organizzazione = sanitizeOrganizzazione(organizzazione);
 
+        // Se l'ID non è presente, imposta l'amministratore per la nuova organizzazione
         if (id.isEmpty()) {
-            // Imposta l'admin dell'organizzazione
             Organizzatore admin = new Organizzatore();
             admin.setId(idAdmin);
             organizzazione.setAdmin(admin);
         }
 
-        // Aggiunge i link social all'organizzazione
+        // Modifica i link social associati all'organizzazione
         linkOrganizzazioneService.modificaLinkOrganizzazione(organizzazione, "Sito", sito);
         linkOrganizzazioneService.modificaLinkOrganizzazione(organizzazione, "Instagram", instagram);
         linkOrganizzazioneService.modificaLinkOrganizzazione(organizzazione, "Facebook", facebook);
         linkOrganizzazioneService.modificaLinkOrganizzazione(organizzazione, "Twitter", twitter);
         linkOrganizzazioneService.modificaLinkOrganizzazione(organizzazione, "Linkedin", linkedin);
 
+        // Salva o rimuove la foto dell'organizzazione
+        String newUrlFoto = imageService.saveImage("organizzazione", foto.orElse(null), urlFoto, deletedPhoto.orElse(null));
+        organizzazione.setUrlFoto(newUrlFoto);
 
-        // Salva l'immagine dell'organizzazione
-        saveFotoOrganizzazione(organizzazione, foto.orElse(null), urlFoto, deletedPhoto.orElse(null));
-
-        // Salva l'organizzazione
+        // Salva l'organizzazione nel repository
         return salvaOrganizzazione(organizzazione, id, idAdmin);
 
     }
 
 
     /**
-     * Salva la foto dell'organizzazione nel percorso specificato.
-     *
-     * @param organizzazione l'istanza di Organizzazione a cui associare la foto
-     * @param foto il file della foto (opzionale)
-     * @param oldFoto l'URL della vecchia foto (opzionale)
-     * @param deletedPhoto l'URL della foto da eliminare (opzionale)
-     * @throws RuntimeException se si verifica un errore durante il caricamento dell'immagine
-     */
-    public void saveFotoOrganizzazione(Organizzazione organizzazione,
-                                       MultipartFile foto,
-                                       Optional<String> oldFoto,
-                                       String deletedPhoto) throws RuntimeException {
-
-        String urlFoto = null;
-        if (oldFoto.isPresent()) {
-            urlFoto = oldFoto.get();
-        }
-
-        // Gestione del caricamento dell'immagine
-        if (foto != null && !foto.isEmpty()) {
-
-            try {
-
-                // Genera un nome unico per il file dell'immagine
-                String fileName = UUID.randomUUID().toString() + "_" + foto.getOriginalFilename();
-                Path directory = Paths.get(uploadDir.replace("file:./", "")).resolve("organizzazioniImg");
-                Files.createDirectories(directory);
-                Path savePath = directory.resolve(fileName);
-
-                // Salva il file nel percorso specificato
-                try (InputStream inputStream = foto.getInputStream()) {
-                    Files.copy(inputStream, savePath, StandardCopyOption.REPLACE_EXISTING);
-                }
-                organizzazione.setUrlFoto(fileName);
-
-            } catch (IOException e) {
-                throw new RuntimeException("Errore nel caricamento dell'immagine");
-            }
-
-        } else {
-            if (deletedPhoto != null && deletedPhoto.equals("true")) {
-                organizzazione.setUrlFoto(null);
-            } else if (urlFoto != null) {
-                organizzazione.setUrlFoto(urlFoto);
-            }
-        }
-    }
-
-    /**
-     * Rimuove un organizzatore dalla sua organizzazione
+     * Rimuove un organizzatore dall'organizzazione a cui è associato.
      *
      * @param idOrganizzatore l'ID dell'organizzatore da rimuovere
-     * @throws RuntimeException se l'organizzatore non viene trovato
      */
     public void deleteOrganizzatore(Long idOrganizzatore) {
 
-        // Trova l'organizzatore per ID
+        // Recupera l'organizzatore dal repository
         Organizzatore organizzatore = organizzatoreRepository.findById(idOrganizzatore).orElse(null);
         if (organizzatore == null) {
             throw new RuntimeException("Organizzatore non trovato");
         }
 
-        // Setta a null l'organizzazione e salva l'organizzatore
+        // Imposta l'organizzazione dell'organizzatore a null e salva le modifiche
         organizzatore.setOrganizzazione(null);
         organizzatoreRepository.save(organizzatore);
 
     }
 
+
     /**
-     * Elimina un'organizzazione dato il suo ID.
+     * Elimina un'organizzazione dal repository.
      *
      * @param id l'ID dell'organizzazione da eliminare
-     * @throws RuntimeException se l'organizzazione non viene trovata
      */
     public void deleteOrganizzazione(Long id) {
-        // Trova l'organizzazione per ID
+
+        // Recupera l'organizzazione dal repository
         Organizzazione organizzazione = organizzazioneRepository.findById(id).orElse(null);
         if (organizzazione == null) {
             throw new RuntimeException("Organizzazione non trovata");
         }
-        // Elimina l'organizzazione (e i dati collegati)
+        // Elimina l'organizzazione dal repository
         organizzazioneRepository.delete(organizzazione);
     }
 
     /**
      * Aggiunge un organizzatore a un'organizzazione.
      *
-     * @param email            l'email dell'organizzatore da aggiungere
+     * @param email l'email dell'organizzatore da aggiungere
      * @param idOrganizzazione l'ID dell'organizzazione a cui aggiungere l'organizzatore
-     * @throws IllegalArgumentException  se l'organizzatore non esiste
-     * @throws DuplicatedEntityException se l'organizzatore appartiene già a un'organizzazione
-     * @throws RuntimeException          se l'organizzazione non viene trovata
      */
     public void addOrganizzatore(String email, Long idOrganizzazione) {
 
-        // Trova l'organizzatore per email
+        // Recupera l'organizzatore dal repository utilizzando l'email
         Organizzatore organizzatore = organizzatoreRepository.findByMail(email);
         if (organizzatore == null) {
             throw new IllegalArgumentException("Organizzatore inesistente");
         }
 
-        // Verifica se l'organizzatore appartiene già a un'organizzazione
+        // Verifica se l'organizzatore è già associato a un'altra organizzazione
         if (organizzatore.getOrganizzazione() != null) {
             throw new DuplicatedEntityException("L'organizzatore fa già parte di un'organizzazione");
         }
 
-        // Trova l'organizzazione per ID
+        // Recupera l'organizzazione dal repository
         Organizzazione organizzazione = organizzazioneRepository.findById(idOrganizzazione).orElse(null);
         if (organizzazione == null) {
             throw new RuntimeException("Organizzazione non trovata");
         }
 
-        // Setta l'organizzazione e aggiorna l'organizzatore
+        // Associa l'organizzatore all'organizzazione e salva le modifiche
         organizzatore.setOrganizzazione(organizzazione);
         organizzatoreRepository.save(organizzatore);
 
