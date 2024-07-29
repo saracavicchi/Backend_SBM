@@ -53,9 +53,9 @@ public class HomepageController {
         Organizzatore organizzatore = null;
         try {
             organizzatore = objectMapper.readValue(loggedUser, Organizzatore.class); // Conversione della stringa JSON (da mock o microservizio) in oggetto Organizzatore
-            organizzatoreService.findOrCreateOrganizzatore(organizzatore);
-            System.out.println(loggedUser);
-            return loggedUser;
+            Organizzatore loggedOrganizzatore = organizzatoreService.findOrCreateOrganizzatore(organizzatore);
+            String organizzatoreJson = objectMapper.writeValueAsString(loggedOrganizzatore);
+            return organizzatoreJson;
         } catch (Exception e) {
             e.printStackTrace();
         }

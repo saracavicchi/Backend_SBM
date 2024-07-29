@@ -52,12 +52,13 @@ public class OrganizzatoreService {
      * @param newOrganizzatore L'organizzatore da cercare o creare.
      */
     @Transactional
-    public void findOrCreateOrganizzatore(Organizzatore newOrganizzatore) {
+    public Organizzatore findOrCreateOrganizzatore(Organizzatore newOrganizzatore) {
         Optional<Organizzatore> organizzatoreOptional = organizzatoreRepository.findById(newOrganizzatore.getId());
         if (organizzatoreOptional.isPresent()) {
             System.out.println("Organizzatore già presente");
+            return organizzatoreOptional.get();
         } else {
-            organizzatoreRepository.save(newOrganizzatore);
+            return organizzatoreRepository.save(newOrganizzatore);
         }
     }
 
