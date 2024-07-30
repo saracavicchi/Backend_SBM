@@ -61,9 +61,9 @@ public class Organizzazione {
     @Column(name = "iban", length = 34)
     private String iban;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "id_admin")
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.RESTRICT)
+    @JoinColumn(name = "id_admin", nullable = false)
     private Organizzatore admin;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "organizzazione")

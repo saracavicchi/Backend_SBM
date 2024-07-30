@@ -1,0 +1,179 @@
+{
+  "uuid": "296193e7-04cc-4b31-b455-97b7431cba63",
+  "lastMigration": 32,
+  "name": "Mock SBM",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "b2900cc3-9761-43ac-ac24-dc4ec3e40906",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/getPastEvents",
+      "responses": [
+        {
+          "uuid": "c1830bb3-21d9-4155-9893-8fa6d7036eae",
+          "body": "[\n{\n  \"id\": 1,\n  \"nome\": \"Concerto Bruce Springsteen Ferrara\",\n  \"data_ora\": {\n    \"inizio\": \"2023-05-18T21:00:00.000Z\",\n    \"fine\": \"2023-05-18T23:59:59.999Z\"\n  },\n  \"indirizzo\": {\n    \"stato\": \"Italia\",\n    \"provincia\": \"FE\",\n    \"città\": \"Ferrara\",\n    \"cap\": \"44122\",\n    \"via\": \"Parco Urbano Giorgio Bassani\",\n    \"num_civico\": null\n  },\n  \"url_photo\": \"bruceFerrara.png\",\n  \"stelle\": 3.5\n},\n{\n  \"id\": 2,\n  \"nome\": \"Baloons Ferrara\",\n  \"data_ora\": {\n    \"inizio\": \"2023-09-09T09:00:00.000Z\",\n    \"fine\": \"2023-09-15T23:59:59.999Z\"\n  },\n  \"indirizzo\": {\n    \"stato\": \"Italia\",\n    \"provincia\": \"FE\",\n    \"città\": \"Ferrara\",\n    \"cap\": \"44122\",\n    \"via\": \"Parco Urbano Giorgio Bassani\",\n    \"num_civico\": null\n  },\n  \"url_photo\": \"balloons.jpg\",\n  \"stelle\": 4.1\n}\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "50151138-95ee-40ae-bdbe-7f4aef190833",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/getLoggedUser",
+      "responses": [
+        {
+          "uuid": "3ddfd516-2a98-4c10-b257-6d7f797dddc5",
+          "body": "{\n  \"id\": 19,\n  \"codFiscale\": \"FRRRCR20A41F105E\",\n  \"nome\": \"Riccardo\",\n  \"cognome\": \"Ferri\",\n  \"dataNascita\": \"1981-06-18\",\n  \"username\": \"riccardo.ferri\",\n  \"mail\": \"riccardo.ferri@email.com\",\n  \"telefono\": null,\n  \"bio\": null,\n  \"urlFoto\": null,\n  \"partitaIva\": null,\n  \"iban\": null,\n  \"stato\": null,\n  \"provincia\": null,\n  \"città\": null,\n  \"cap\": null,\n  \"via\": null,\n  \"numCivico\": null,\n  \"organizzazione\": null\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "82b3682d-7bb1-4b22-a1f9-aabc4c14fc5a",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/getNotifications",
+      "responses": [
+        {
+          "uuid": "e382007a-12fe-4141-8cba-e97a91d2c917",
+          "body": "[\n  {\n    \"id\": 1,\n    \"mittente\": \"John Smith\",\n    \"testo\": \"Ciao, vorrei venire alla tua festa\",\n    \"data_ora\": \"2024-07-14T18:25:43.219Z\"\n  },\n  {\n    \"id\": 2,\n    \"mittente\": \"Alicia Keys\",\n    \"testo\": \"Hai ricevuto un pagamento\",\n    \"data_ora\": \"2024-07-09T11:15:13.512Z\"\n  },\n  {\n    \"id\": 3,\n    \"mittente\": \"Hannah Ross\",\n    \"testo\": \"Hai impegni il 28 maggio?\",\n    \"data_ora\": \"2024-05-26T13:47:17.333Z\"\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "4d436736-c367-41fd-b25a-667f981c12ef",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "api/getNextEvents",
+      "responses": [
+        {
+          "uuid": "04f97763-f881-452a-b88b-d4bf3881cef8",
+          "body": "[{\n  \"id\": 3,\n  \"nome\": \"Compleanno di Sharon Kelsy\",\n  \"data_ora\": {\n    \"inizio\": \"2024-10-02T18:00:00.000Z\",\n    \"fine\": \"2024-10-02T23:25:00.000Z\"\n  },\n  \"indirizzo\": {\n    \"stato\": \"Italia\",\n    \"provincia\": \"FE\",\n    \"città\": \"Ferrara\",\n    \"cap\": \"44121\",\n    \"via\": \"Largo Castello\",\n    \"num_civico\": \"1\"\n  },\n  \"url_photo\": \"compleanno.webp\"\n  \n},\n{\n  \"id\": 4,\n  \"nome\": \"Falò in Riva al Mare - Rimini 2024\",\n  \"data_ora\": {\n    \"inizio\": \"2024-08-28T20:00:00.000Z\",\n    \"fine\": \"2024-08-29T03:00:00.000Z\"\n  },\n  \"indirizzo\": {\n    \"stato\": \"Italia\",\n    \"provincia\": \"RI\",\n    \"città\": \"Rimini\",\n    \"cap\": \"47924\",\n    \"via\": \"Principe di Piemonte\",\n    \"num_civico\": \"14\"\n  },\n  \"url_photo\": \"ferragosto.jpg\"\n  \n}]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "b2900cc3-9761-43ac-ac24-dc4ec3e40906"
+    },
+    {
+      "type": "route",
+      "uuid": "50151138-95ee-40ae-bdbe-7f4aef190833"
+    },
+    {
+      "type": "route",
+      "uuid": "82b3682d-7bb1-4b22-a1f9-aabc4c14fc5a"
+    },
+    {
+      "type": "route",
+      "uuid": "4d436736-c367-41fd-b25a-667f981c12ef"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [],
+  "callbacks": []
+}

@@ -1,0 +1,29 @@
+- Trello:
+
+https://trello.com/b/hvi0TOt4/sbm
+
+
+- Miro:
+
+https://miro.com/app/board/uXjVKv9MMKY=/?share_link_id=441511393955
+
+
+- Figma (le pagine sono state utilizzate come base ed eventualmente perfezionate in corso d'opera):
+
+Interfaccia pagina Homepage (area personale)
+https://www.figma.com/design/rEGiAZFxM6AmkywZTSDDYM/Untitled?node-id=130-2&t=DdtLQ7aPoyjA8gDs-1
+
+Pagina organizzatore modifica informazioni (sezione anagrafica)
+https://www.figma.com/design/sITXDf6Z7FFpMDSY024WOw/Untitled?node-id=0-1&t=KgiuXi15YWZ9xl2z-1
+
+Pagina organizzatore modifica informazioni (sezione social)
+https://www.figma.com/design/DI0jKtMuijxTe5gDGNdxVa/Untitled?node-id=0-1&t=AR3GBuX2S92XpoQJ-1
+
+Pagina organizzatore modifica informazioni (sezione pagamenti)
+https://www.figma.com/design/U3O9qvRKoQFVBK66mCkcSk/Untitled?node-id=0-1&t=17gxTD2izawxEWyq-1
+
+Pagina gestione organizzazione
+https://www.figma.com/design/XsiwfQU1s34BlGAubUr0Ry/Untitled?node-id=3-82&t=QtGvwF1Ppcwaa99W-1
+
+Pagina creazione e modifica organizzazione
+https://www.figma.com/design/slqJeAb42WEGWlFiX8hcJo/Untitled?node-id=1-3&t=LB5IYA2pGhOjkii6-1

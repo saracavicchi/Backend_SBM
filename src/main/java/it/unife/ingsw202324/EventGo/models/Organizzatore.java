@@ -78,7 +78,7 @@ public class Organizzatore {
     @JsonIgnore
     private Organizzazione organizzazione;
 
-    @Column(name = "data_nascita")
+    @Column(name = "data_nascita", nullable = false)
     private LocalDate dataNascita;
 
     @Column(name = "iban", length = 34)

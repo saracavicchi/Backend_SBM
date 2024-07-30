@@ -5,14 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0be14a5f-e21c-4685-95b5-6288159638dd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/relazione_esame/LINKS.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relazione_esame/Mock_SBM.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relazione_esame/docs_test_automatici/Test Results — ImageControllerIntegrationTest.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relazione_esame/docs_test_automatici/Test Results — ImageControllerTest.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relazione_esame/docs_test_manuali/test_aggiunta_organizzatore.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relazione_esame/docs_test_manuali/test_creazione_organizzazione.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/relazione_esame/sbm_db.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzazioniImg/678d24dc-f0bd-489b-a46e-16afb17c1c6c_back6.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/images/organizzazioniImg/6cfc8fd4-b9e2-494b-af60-9c3ddfcec6b7_back6.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.6/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.6/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d9e7ea6e-ab63-4122-bfe7-0e07ecb77eaa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d9e7ea6e-ab63-4122-bfe7-0e07ecb77eaa.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unife/ingsw202324/EventGo/controllers/ImageControllerIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unife/ingsw202324/EventGo/controllers/ImageControllerIntegrationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/unife/ingsw202324/EventGo/controllers/ImageControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/unife/ingsw202324/EventGo/controllers/ImageControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/models/Organizzatore.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/models/Organizzatore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/models/Organizzazione.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/it/unife/ingsw202324/EventGo/models/Organizzazione.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/HomepageController.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrganizzatoreController.class.uniqueId1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrganizzatoreService.class.uniqueId2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documenti_test/automatici/Test Results — ImageControllerIntegrationTest.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documenti_test/automatici/Test Results — ImageControllerTest.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documenti_test/manuali/test_aggiunta_organizzatore.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documenti_test/manuali/test_creazione_organizzazione.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/models/Organizzatore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/models/Organizzatore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/models/Organizzazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/unife/ingsw202324/EventGo/models/Organizzazione.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +126,7 @@
     &quot;Gradle.ImageControllerTest.testGetImageOrganizzatoreExists.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;correzioni-marci&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;development&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/marcellobraghiroli/Repositories/Backend_SBM&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -139,7 +158,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/static/images/organizzazioniImg" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ImageControllerTest">
+  <component name="RunManager" selected="Gradle.Backend_SBM [bootRun]">
     <configuration name="Backend_SBM [bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -247,9 +266,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Backend_SBM [bootRun]" />
         <item itemvalue="Gradle.ImageControllerTest" />
         <item itemvalue="Gradle.ImageControllerIntegrationTest" />
-        <item itemvalue="Gradle.Backend_SBM [bootRun]" />
         <item itemvalue="Gradle.Backend_SBM [bootTestRun]" />
       </list>
     </recent_temporary>
@@ -306,6 +325,13 @@
       <workItem from="1722326463454" duration="682000" />
       <workItem from="1722327982251" duration="90000" />
       <workItem from="1722328087455" duration="9802000" />
+      <workItem from="1722349849257" duration="479000" />
+      <workItem from="1722351965485" duration="166000" />
+      <workItem from="1722352237683" duration="2825000" />
+      <workItem from="1722357866114" duration="566000" />
+      <workItem from="1722358871784" duration="99000" />
+      <workItem from="1722358992053" duration="183000" />
+      <workItem from="1722359293557" duration="660000" />
     </task>
     <servers />
   </component>
